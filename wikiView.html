@@ -2,51 +2,172 @@
 <html>
 <head>
 <title>Wikipedia Viewer</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
+
+<script>
+    $(document).ready(function() {
+        
+        $("#takeAction").submit(function (event) {
+            $("#search").trigger("click");
+            event.preventDefault();
+        }) 
+
+   
+                      
+                      
+        $("#search").on('click', function() {
+            
+            var queryData = $("#searchBox").val();
+            console.log(queryData);
+            
+            var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?";
+            var results;
+            
+            $.ajax( {
+                url: remoteUrlWithOrigin,
+                data: queryData,
+                dataType: 'json',
+                type: 'POST',
+                headers: { 'Api-User-Agent': 'Example/1.0' },
+                success: function(data) {
+                    $(".middle").html(JSON.stringify(data));
+                    console.log(JSON.stringify(data));
+                    results = data;
+                }
+            } );
+            
+            
+            $(".middle").html(JSON.stringify(results));
+            console.log(JSON.stringify(results));
+    } )
+             
+                      
+                      
+    });
+    
+    
+</script>
 
 
 <style>
+
     body {
         background-color: burlywood;
     }
     .top {
+        padding: 20px;
+    }
+    .heading {
+        margin: 20px;
+        color: darkolivegreen;
+        font-family: fantasy;
+    }
+    ::-webkit-input-placeholder {
+        color: cadetblue;
+    }
+    .middle {
         
     }
-    .input[type=text] {
+    .instructions {
+        color: azure;
+        font-family: "monospace";
+    }
+    input[type=text] {
         width: 130px;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out;
+        color: darkcyan;
         box-sizing: border-box;
         border: 2px solid #CCC;
-        border-radius: 4px;
+        border-radius: 20px;
+        border-color: cadetblue;
         font-size: 16px;
-        background-color: white;
-        background-image: url('searchicon.png');
-        background-position: 10px 10px;
+        background-color: burlywood;
+        background-image: url('searchicn.png');
+        background-size: contain;
+        background-position: 0;
         background-repeat: no-repeat;
         padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
 
     }
     input[type=text]:focus {
-        width: 100%;
+        width: 50%;
     }
-    rounded {
-
+    
+    .rounded {
+        text-align: center;
+        
+    }
+    .buttons {
+        margin: 20px;
+    }
+    .close {
+        border: 1px solid transparent;
+        background-color: transparent;
+        display: inline-block;
+        vertical-align: middle;
+        outline: 0;
+        cursor: pointer;
+    }
+    .close:after {
+        content: "X";
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        background-color: #FA9595;
+        z-index: 1;
+        right: 35px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        padding: 2px;
+        border-radius: 50px;
+        text-align: center;
+        color: white;
+        font-weight: normal;
+        font-size: 12px;
+        box-shadow: 0 0 2px #E50F0F;
+        cursor: pointer;
+    }
+    .search-box:not(:valid) ~ close {
+        display: none;
     }
 </style>
 </head>
 <body>
+    <div class="container-fluid">
     <div class="top">
-        <div class="rounded">
-            <form>
-                <input type="text" name="search" placeholder="Search...">
-            </form>            
+        <div class="heading text-center">
+            <h1>Wikipedia Viewer</h1>
         </div>
-    </div>
+        <div class="rounded">
+            <form id="takeAction">
+                <div class="row">
+                <input type="text" id="searchBox" name="search" required class="search-box" placeholder="Search...">
+                <button class="close" type="reset"></button>
+                </div>
+                <div class="buttons row">
+                <div class="col-xs-5">
+                </div>
+                <div class="col-xs-2">
+                    <a href="https://en.wikipedia.org/wiki/Special:Random"><button id="random" class="btn btn-primary">Random Wiki</button></a>
+                    <button id="search" type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-xs-5"></div>
+                </div>
+            </form>     
 
-    
-    
-    
-    
+        </div>
+        
+    </div>
+    <div class="middle text-center">
+        <h4 class="instructions">Enter a search term or pick a random wiki</h4>
+    </div>    
+    </div>    
 </body>
 </html>
