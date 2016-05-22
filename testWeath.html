@@ -6,39 +6,85 @@
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
 
     
 
 <script>
   $(document).ready(function() {
-      $("#getMessage").click(checkLocation);
 
-function checkLocation(){
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getLocation,locationFailed);
-    $("#data").html("lat " + lat + "<br>lng " +lng);
-    //document.write("you have geolocation");
-}
-else {
-    document.write("you don't have geolocation");
-}
-}//ends checkLocation()
+      
+      
+      
+      
+      
 
-function getLocation(position){
-var lat = position.coords.latitude;
-var lng = position.coords.longitude;
-var exactitud = position.coords.accuracy;
+     $("#getMessage").click(initiate_geolocation);
 
-$.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitud + ',' + longitud + '&sensor=true', function(data) {
-   alert(data.results[4].address_components[0].long_name+", "+data.results[5].address_components[0].long_name+", "+data.results[6].address_components[0].long_name);
-   //alert(data.results[4].formatted_address);
-});
-
-}   
-function locationFailed(){
-document.write("we didn't get your location. Please check your settings");
-}
+ 
+    function initiate_geolocation() {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(handle_geolocation_query, handle_errors);
+        }
+        else
+        {
+            yqlgeo.get('visitor', normalize_yql_response);
+        }
+    }
+ 
+    function handle_errors(error)
+    {
+        switch(error.code)
+        {
+            case error.PERMISSION_DENIED: alert("user did not share geolocation data");
+            break;
+ 
+            case error.POSITION_UNAVAILABLE: alert("could not detect current position");
+            break;
+ 
+            case error.TIMEOUT: alert("retrieving position timedout");
+            break;
+ 
+            default: alert("unknown error");
+            break;
+        }
+    }
+ 
+    function normalize_yql_response(response)
+    {
+        if (response.error)
+        {
+            var error = { code : 0 };
+            handle_error(error);
+            return;
+        }
+ 
+        var position = {
+            coords :
+            {
+                latitude: response.place.centroid.latitude,
+                longitude: response.place.centroid.longitude
+            },
+            address :
+            {
+                city: response.place.locality2.content,
+                region: response.place.admin1.content,
+                country: response.place.country.content
+            }
+        };
+ 
+        handle_geolocation_query(position);
+    }
+ 
+    function handle_geolocation_query(position){
+        alert('Lat: ' + position.coords.latitude + ' ' +
+              'Lon: ' + position.coords.longitude);
+        }
+      
+      
+      
+      
 
         
   
