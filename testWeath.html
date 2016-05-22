@@ -89,10 +89,11 @@
           console.log("More or less " + crd.accuracy + " meters. ");
           displayLocation(lat, lng);
           
-          
+         
          $.getJSON(fio, function(json) {
             console.log("SUCCESS");
             $("#joke").html(JSON.stringify(json));
+         })
 
         
         
