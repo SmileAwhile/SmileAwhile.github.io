@@ -121,6 +121,14 @@
         wicon = weather.currently.icon;
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
+        
+                        var skycons = new Skycons({"color": "blue"});
+  // on Android, a nasty hack is needed: {"resizeClear": true}
+
+  // you can add a canvas by it's ID...
+  skycons.add("icon1", wicon);
+        skycons.play();
+      
                 
         }
                 
@@ -180,12 +188,8 @@
     });
       
 
-      
-                var skycons = new Skycons({"color": "pink"});
-  // on Android, a nasty hack is needed: {"resizeClear": true}
 
-  // you can add a canvas by it's ID...
-  skycons.add("#icon1", Skycons.PARTLY_CLOUDY_DAY);
+
 
   });  // end document
 </script>
@@ -250,11 +254,7 @@
     <div class = "forecast child col-xs-12">
 <canvas id="icon1" width="128" height="128">
     <script>
-          var skycons = new Skycons({"color": "pink"});
-  // on Android, a nasty hack is needed: {"resizeClear": true}
 
-  // you can add a canvas by it's ID...
-  skycons.add("#icon1", Skycons.PARTLY_CLOUDY_DAY);
     </script>
         </canvas>
         <div class="row">
