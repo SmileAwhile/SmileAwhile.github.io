@@ -40,6 +40,8 @@
       function success(pos) {
           var crd = pos.coords;
           
+          console.log("pos: " + pos)
+          
           lat = crd.latitude;
           lng = crd.longitude;
           fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
