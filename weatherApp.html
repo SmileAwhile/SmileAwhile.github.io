@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Weather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+
+      <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>    
+    
+
+<script>
+  $(document).ready(function() {    
+      
+      var lat;
+      var lng;
+      var fio;
+      var weather;
+      var wicon;
+      var cels;
+      var state = false;  // state for unit of measurement
+      var map;
+      var local;
+      var city;
+      var fiosi;
+      
+      
+      // get city
+       function displayLocation(latitude,longitude){
+        var request = new XMLHttpRequest();
+
+       var method = 'GET';
+       var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCDsK3ipmu4kdNRJv4hfC2rZookwofXWgM&latlng='+latitude+','+longitude+'&sensor=true';
+       var async = true;
+           
+       request.open(method, url, async);
+       request.onreadystatechange = function(){
+       if(request.readyState == 4 && request.status == 200){
+         var data = JSON.parse(request.responseText);
+        // alert(request.responseText); // check under which type your city is stored, later comment this line
+         var addressComponents = data.results[0].address_components;
+         for(i=0;i<addressComponents.length;i++){
+            var types = addressComponents[i].types
+            //alert(types);
+            if(types=="locality,political"){
+           //    alert(addressComponents[i].long_name); // this should be your city, depending on where you are
+             }
+           }
+    //       alert(addressComponents[2].long_name);
+           city = addressComponents[2].long_name;
+           local = addressComponents;
+        //alert(address.city.short_name);
+       }
+    };
+   request.send();
+ };    
+      
+      var options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+      };
+      
+      function success(pos) {
+          var crd = pos.coords;         
+          
+          lat = crd.latitude;
+          lng = crd.longitude;
+          fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
+          map = "https://maps.googleapis.com/maps/api/geocode/json?latlng=+lat"+","+lng+"&key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"
+          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in 
+          displayLocation(lat, lng);
+          
+          
+         $.getJSON(fio, function(json) {
+            console.log("SUCCESS");
+            $("#joke").html(JSON.stringify(json));
+
+        })
+        
+        $.getJSON(fiosi, function(json) {
+            console.log("SUCCES");
+            $("#joke").html(JSON.stringify(json));
+            })        
+                    
+        .done(function() { console.log( "second success" ); })
+        .fail(function() { console.log( "error" ); })
+        .always(function() { console.log( "complete" ); });
+          
+        $.ajax({
+            url: fio,
+            dataType: 'jsonp',
+            success: function(results) {
+        
+                // initialize weather object
+                weather = results;        
+
+                // initialize icon value
+                wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
+
+                // add weather and city info
+                 $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
+
+                // add skycons
+                var skycons = new Skycons({"color": "deepskyblue" });
+
+                skycons.add("icon1", wicon);
+                skycons.play();     
+                
+        }
+                
+    })  // end ajax            
+    
+              $.ajax({
+                    url: fiosi,
+                    dataType: 'jsonp',
+                    success: function(results){
+                        console.log(results);
+                        cels = results;
+
+                    }
+                });
+
+
+            $.ajax({
+                  url: map,
+                  dataType: "jsonp",
+                  success: function (data) {
+                      console.log('here');
+                      console.log(data);
+
+                  }
+                });
+
+  }  // end success
+     
+      
+      function error(err) {
+          if(failure.message.indexOf("Only secure origins are allowed") == 0) {
+      // Secure Origin issue.
+    }
+          console.warn("ERROR(" + err.code + "): " + err.message);
+      };
+      
+      navigator.geolocation.getCurrentPosition(success, error, options);
+
+    $("#units").on("click", function(){
+       
+       if (state) {
+            $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
+            state = false;
+       } else {
+           $(".info").html("<h1>" + local[2].long_name + "<br>" + JSON.stringify(cels.currently.temperature) + " &deg;C</h1>");
+           state = true;
+       }
+
+    });  
+
+  });  // end document
+</script>
+
+    <style>
+        body {
+            background-color: darkcyan;
+        }
+        .heading {
+            font-size: 120px;
+            color: darkkhaki;
+        }
+        h1 {
+   
+        }
+        .parent {
+            position: relative;
+        }
+        .child {
+            position: absolute;
+            top: 50%;
+
+        }
+        .info {
+            color: aliceblue;
+        }
+        .buttons {
+            padding: 15px;
+        }
+        .icon {
+            font-size: 40px;
+        }
+        .sign {
+            color: lemonchiffon;
+        }
+    </style>
+    
+<body>    
+<div class="container-fluid">
+  <div class = "row text-center">
+      <h1 class="heading">Local Weather App</h1>
+      <p class="sign text-center">created by Corey</p>
+      <br><br><br><br><br><br><br><br>
+      
+      
+  </div>
+  <div id="data" class = "row text-center">            
+      
+  </div>
+  <div class = "parent row text-center">
+    <div class = "forecast child col-xs-12">
+<canvas id="icon1" width="128" height="128">
+    <script>
+
+    </script>
+        </canvas>
+        <div class="row">
+        <div class="col-xs-4">
+            </div>
+            <div class="info col-xs-4">
+              <h1></h1>
+                <div class="buttons row">
+                    <div class="col-xs-2"></div>
+                    <div class="icon col-xs-2">
+</div>
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-2">
+                    </div>
+                    <div class="col-xs-2"></div>
+                    
+                </div>
+                </div>
+            <div class="col-xs-4">
+                     </div>
+            <div class="col-xs-12"></div>
+            
+        </div>
+        <button id="units" class="btn btn-primary">Units</button>
+    </div>
+  </div>
+</div>
+    </body>
+    </html>
