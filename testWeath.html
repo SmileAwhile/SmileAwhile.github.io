@@ -11,7 +11,7 @@
     var geocoder;
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction, {timeout: 30000, enableHighAccuracy: true, maximumAge: 75000});
 } 
 //Get the latitude and the longitude;
 function successFunction(position) {
