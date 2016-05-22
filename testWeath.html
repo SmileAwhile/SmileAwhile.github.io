@@ -29,6 +29,7 @@
           
           lat = crd.latitude;
           lng = crd.longitude;
+          fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
           
           console.log("Your current position is: ");
           console.log("Latitude : " + crd.latitude);
@@ -46,15 +47,31 @@
       navigator.geolocation.getCurrentPosition(success, error, options);
 
 
+    $.getJSON(fio, function(json) {
+            console.log("SUCCESS");
+            $("#joke").html(JSON.stringify(json));
+
+        })
+        .done(function() { console.log( "second success" ); })
+        .fail(function() { console.log( "error" ); })
+        .always(function() { console.log( "complete" ); });
+});
+    $.ajax({
+    url: fio,
+    dataType: 'jsonp',
+    success: function(results){
+        console.log(results);
+    }
+});
 
     $("#getMessage").on("click", function(){
         
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
-        $("#joke").html(JSON.stringify(json));
-      });      
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
-         $("#joke").html(JSON.stringify(json));         
-      });
+    //  $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
+  //      $("#joke").html(JSON.stringify(json));
+      //});      
+      //$.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
+    //     $("#joke").html(JSON.stringify(json));         
+    //  });
 
     });
       
