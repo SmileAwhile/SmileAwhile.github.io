@@ -6,6 +6,8 @@
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
+      <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+    
     
 <!--
     <script type="text/javascript" src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"><script>
@@ -178,6 +180,12 @@
     });
       
 
+      
+                var skycons = new Skycons({"color": "pink"});
+  // on Android, a nasty hack is needed: {"resizeClear": true}
+
+  // you can add a canvas by it's ID...
+  skycons.add("#icon1", Skycons.PARTLY_CLOUDY_DAY);
 
   });  // end document
 </script>
