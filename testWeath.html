@@ -118,7 +118,7 @@
         console.log("weather: " + JSON.stringify(weather));
         console.log("weather.currently : " + JSON.stringify(weather.currently));
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
-        wicon = weather.currently.icon;
+        wicon = JSON.stringify(weather.currently.icon);
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
         
@@ -126,7 +126,7 @@
   // on Android, a nasty hack is needed: {"resizeClear": true}
 
   // you can add a canvas by it's ID...
-  skycons.add("icon1", "rain");
+  skycons.add("icon1", wicon);
         skycons.play();
       
                 
