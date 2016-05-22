@@ -7,11 +7,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 <!--
     <script type="text/javascript" src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"><script>
-    -->
+  
     
     
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAUY"type="text/javascript"></script>
-
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAUY&callback=initMap"type="text/javascript"></script>
+-->
     
 
 <script>
@@ -25,7 +25,9 @@
       var weather;
       var wicon;
       var cels;
-      var state = false
+      var state = false;
+      var map;
+      var local;
       
       var options = {
           enableHighAccuracy: true,
@@ -39,6 +41,7 @@
           lat = crd.latitude;
           lng = crd.longitude;
           fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
+          map = "https://maps.googleapis.com/maps/api/geocode/json?latlng=+lat"+","+lng+"&key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"
           fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in C
           console.log("Your current position is: ");
           console.log("Latitude : " + crd.latitude);
@@ -185,14 +188,15 @@
 
     });
       
- /*           $.ajax({
-  url: "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/",
+            $.ajax({
+  url: map,
   dataType: "jsonp",
   success: function (data) {
       console.log('here');
       console.log(data);
+      local = data;
   }
-});*/
+});
 
   });
 </script>
