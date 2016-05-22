@@ -29,6 +29,9 @@
       };
       
       function error(err) {
+          if(failure.message.indexOf("Only secure origins are allowed") == 0) {
+      // Secure Origin issue.
+    }
           console.warn("ERROR(" + err.code + "): " + err.message);
       };
       
