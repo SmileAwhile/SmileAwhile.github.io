@@ -6,22 +6,11 @@
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
-      <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+      <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>    
     
-    
-<!--
-    <script type="text/javascript" src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"><script>
-  
- 
-    
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAUY&callback=initMap"type="text/javascript"></script>
-
-       -->
 
 <script>
-  $(document).ready(function() {
-      
-
+  $(document).ready(function() {    
       
       var lat;
       var lng;
@@ -29,20 +18,21 @@
       var weather;
       var wicon;
       var cels;
-      var state = false;
+      var state = false;  // state for unit of measurement
       var map;
       var local;
       var city;
       var fiosi;
       
       
+      // get city
        function displayLocation(latitude,longitude){
         var request = new XMLHttpRequest();
 
        var method = 'GET';
        var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCDsK3ipmu4kdNRJv4hfC2rZookwofXWgM&latlng='+latitude+','+longitude+'&sensor=true';
        var async = true;
-
+           
        request.open(method, url, async);
        request.onreadystatechange = function(){
        if(request.readyState == 4 && request.status == 200){
@@ -63,9 +53,7 @@
        }
     };
    request.send();
- };
-      
-      
+ };          
       
       var options = {
           enableHighAccuracy: true,
@@ -74,21 +62,13 @@
       };
       
       function success(pos) {
-          var crd = pos.coords;
-          
-          console.log("pos: " + JSON.stringify(pos));
+          var crd = pos.coords;        
           
           lat = crd.latitude;
           lng = crd.longitude;
           fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
           map = "https://maps.googleapis.com/maps/api/geocode/json?latlng=+lat"+","+lng+"&key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"
-          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in C
-          console.log("Your current position is: ");
-          console.log("Latitude : " + crd.latitude);
-          console.log("Logitutdue:" + crd.longitude);
-          console.log("More or less " + crd.accuracy + " meters. ");
-          displayLocation(lat, lng);
-          
+          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units      
           
          $.getJSON(fio, function(json) {
             console.log("SUCCESS");
@@ -111,23 +91,14 @@
             url: fio,
             dataType: 'jsonp',
             success: function(results) {
-                console.log(results);
+
         
                 // initialize weather object
                 weather = results;
         
-                console.log("weather: " + weather);
-                console.log("weather.currently : " + weather.currently);
-                console.log("weather.currently.temperature: " + weather.currently.temperature);
-                console.log("stringify()");
-                console.log("weather: " + JSON.stringify(weather));
-                console.log("weather.currently : " + JSON.stringify(weather.currently));
-                console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
-
                 // initialize icon value
                 wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
-                console.log("wicon" + wicon);
-
+                
                 // add weather and city info
                  $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
 
@@ -135,16 +106,12 @@
                 var skycons = new Skycons({"color": "aliceblue" });
 
                 skycons.add("icon1", wicon);
-                skycons.play();
-      
+                skycons.play();     
                 
         }
                 
-    })  // end ajax
-              
+    })  // end ajax            
     
-
-
               $.ajax({
                     url: fiosi,
                     dataType: 'jsonp',
@@ -177,10 +144,6 @@
       };
       
       navigator.geolocation.getCurrentPosition(success, error, options);
-      console.log("nav.geo" + navigator.geolaction);
-
-
-
 
 
     $("#units").on("click", function(){
@@ -193,11 +156,7 @@
            state = true;
        }
 
-    });
-      
-
-
-
+    });    
 
   });  // end document
 </script>
@@ -223,9 +182,6 @@
         }
         .info {
             color: aliceblue;
-        }
-        #getMessage {
-
         }
         .buttons {
             padding: 15px;
