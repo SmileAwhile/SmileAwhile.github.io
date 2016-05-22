@@ -13,14 +13,7 @@
 <script>
   $(document).ready(function() {
       
-      $.ajax({
-  url: "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng,
-  dataType: "jsonp",
-  success: function (data) {
-      console.log('here');
-      console.log(data);
-  }
-});
+
       
       var lat;
       var lng;
@@ -52,6 +45,15 @@
       
       navigator.geolocation.getCurrentPosition(success, error, options);
 
+      
+            $.ajax({
+  url: "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng,
+  dataType: "jsonp",
+  success: function (data) {
+      console.log('here');
+      console.log(data);
+  }
+});
 
 
     $("#getMessage").on("click", function(){
