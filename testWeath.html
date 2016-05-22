@@ -20,6 +20,7 @@
       var fio;
       var weather;
       var wicon;
+      var cels;
       
       var options = {
           enableHighAccuracy: true,
@@ -32,8 +33,8 @@
           
           lat = crd.latitude;
           lng = crd.longitude;
-          fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in C
-          
+          fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
+          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in C
           console.log("Your current position is: ");
           console.log("Latitude : " + crd.latitude);
           console.log("Logitutdue:" + crd.longitude);
@@ -45,6 +46,12 @@
             $("#joke").html(JSON.stringify(json));
 
         })
+        
+        $.getJSON(fiosi, function(json) {
+            console.log("SUCCES");
+            $("#joke").html(JSON.stringify(json));
+            })
+            
         .done(function() { console.log( "second success" ); })
         .fail(function() { console.log( "error" ); })
         .always(function() { console.log( "complete" ); });
@@ -68,6 +75,18 @@
     }
 });
 
+
+              $.ajax({
+    url: fiosi,
+    dataType: 'jsonp',
+    success: function(results){
+        console.log(results);
+        cels = results;
+        
+    }
+});
+
+
           
       };
       
@@ -84,10 +103,10 @@
 
 
 
-    $("#getMessage").on("click", function(){
+    $("#units").on("click", function(){
         
         
-        $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + "</h1>");
+        $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(cels.currently.temperature) + "</h1>");
         
         /*
                         $("div.ville").append("<div class='endroit'>" + location + " </div>"+
@@ -204,6 +223,7 @@
             <div class="col-xs-12 sign"><p class="text-center">created by Corey</p></div>
             
         </div>
+        <button id="units" class="btn btn-primary">Units</button>
     </div>
   </div>
 </div>
