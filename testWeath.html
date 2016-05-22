@@ -19,6 +19,7 @@
       var lng;
       var fio;
       var weather;
+      var wicon;
       
       var options = {
           enableHighAccuracy: true,
@@ -61,6 +62,9 @@
         console.log("weather: " + JSON.stringify(weather));
         console.log("weather.currently : " + JSON.stringify(weather.currently));
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
+        wicon = weather.currently.temperature;
+        
+                $("#joke").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif></i>'" + JSON.stringify(weather.currently.temperature) + weather.currently.icon);
     }
 });
 
@@ -83,7 +87,19 @@
     $("#getMessage").on("click", function(){
         
         
-        $("#joke").html(JSON.stringify(weather.currently.temperature) + weather.currently.icon);
+        $("#joke").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif></i>'" + JSON.stringify(weather.currently.temperature) + weather.currently.icon);
+        
+        
+                        $("div.ville").append("<div class='endroit'>" + location + " </div>"+
+                                        "<div class='temp'>" + temp_c + " °C</div>"+
+                                        "<div> Temp. ressentie : "+tempRessentie+" °C</div>"+
+                                        "<div class='triangle'></div>"+
+                                        "<div class='icone'><img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif' alt='"+condition+"' title='"+condition+"'/></div>"+
+                                        "<div class='condition'>"+condition+"</div>"+
+                                        "<div>Vent : "+vent_kmh+" km/h</div>"+
+                                        "<div>Rafales : "+rafales+" km/h</div>"+
+                                        "<div>Visibilité : "+visibilite+" km</div>");
+                }
         
         
     //  $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
