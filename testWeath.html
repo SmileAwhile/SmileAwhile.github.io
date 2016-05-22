@@ -54,6 +54,13 @@
     success: function(results){
         console.log(results);
         weather = results;
+        console.log("weather: " + weather);
+        console.log("weather.currently : " + weather.currently);
+        console.log("weather.currently.temperature: " + weather.currently.temperature);
+        console.log("stringify()");
+        console.log("weather: " + JSON.stringify(weather));
+        console.log("weather.currently : " + JSON.stringify(weather.currently));
+        console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
     }
 });
 
