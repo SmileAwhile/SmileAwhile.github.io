@@ -118,6 +118,33 @@
         wicon = weather.currently.icon;
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
+        
+        
+                    //Skycons
+            var icons = new Skycons({
+                    "color": "black"
+                }),
+
+                //The items in the array match the weather condiitons provided by Dark Sky.  In order to invoke the icons
+                //you must loop through the DOM to find the matching conditions
+                list = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"],
+                i;
+
+            //Loop to search through classes to find weather type names
+            for (i = list.length; i--;) {
+                var weatherType = list[i],
+                    elements = document.getElementsByClassName(weatherType);
+                for (e = elements.length; e--;) {
+                    icons.set(elements[e], weatherType);
+                }
+            }
+            icons.play();
+        }
+        
+        
     }
               })
     
@@ -255,6 +282,25 @@
   </div>
   <div class = "parent row text-center">
     <div class = "forecast child col-xs-12">
+          <script>
+    var icons = new Skycons({"color": "#fff"}),
+          list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+
+      for(i = list.length; i--; ) {
+    var weatherType = list[i],
+        elements = document.getElementsByClassName( weatherType );
+    for (e = elements.length; e--;){
+        icons.set( elements[e], weatherType );
+    }
+}
+
+      icons.play();
+  </script>
         <div class="row">
         <div class="col-xs-4">
             </div>
