@@ -118,7 +118,7 @@
         console.log("weather: " + JSON.stringify(weather));
         console.log("weather.currently : " + JSON.stringify(weather.currently));
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
-        wicon = JSON.stringify(weather.currently.icon);
+        wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
         console.log("wicon" + wicon);
         
          $(".jokeCNT").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
