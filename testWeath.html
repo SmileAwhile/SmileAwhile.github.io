@@ -62,7 +62,7 @@
         console.log("weather: " + JSON.stringify(weather));
         console.log("weather.currently : " + JSON.stringify(weather.currently));
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
-        wicon = weather.currently.temperature.icon;
+        wicon = weather.currently.icon;
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + "</h1>");
     }
