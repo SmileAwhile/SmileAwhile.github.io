@@ -122,7 +122,12 @@
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
         
+                        var skycons = new Skycons({"color": "blue"});
+  // on Android, a nasty hack is needed: {"resizeClear": true}
 
+  // you can add a canvas by it's ID...
+  skycons.add("icon1", "rain");
+        skycons.play();
       
                 
         }
@@ -182,13 +187,7 @@
 
     });
       
-                        var skycons = new Skycons({"color": "blue"});
-  // on Android, a nasty hack is needed: {"resizeClear": true}
 
-  // you can add a canvas by it's ID...
-  skycons.add("icon1", wicon);
-      
-        skycons.play();
 
 
 
