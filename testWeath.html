@@ -18,6 +18,7 @@
       var lat;
       var lng;
       var fio;
+      var weather;
       
       var options = {
           enableHighAccuracy: true,
@@ -52,6 +53,7 @@
     dataType: 'jsonp',
     success: function(results){
         console.log(results);
+        weather = results;
     }
 });
 
