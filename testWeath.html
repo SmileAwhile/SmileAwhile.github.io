@@ -6,8 +6,6 @@
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
-
-     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
     
 <!--
     <script type="text/javascript" src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"><script>
@@ -47,16 +45,16 @@
        request.onreadystatechange = function(){
        if(request.readyState == 4 && request.status == 200){
          var data = JSON.parse(request.responseText);
-         alert(request.responseText); // check under which type your city is stored, later comment this line
+        // alert(request.responseText); // check under which type your city is stored, later comment this line
          var addressComponents = data.results[0].address_components;
          for(i=0;i<addressComponents.length;i++){
             var types = addressComponents[i].types
             //alert(types);
             if(types=="locality,political"){
-               alert(addressComponents[i].long_name); // this should be your city, depending on where you are
+           //    alert(addressComponents[i].long_name); // this should be your city, depending on where you are
              }
            }
-           alert(addressComponents[2].long_name);
+    //       alert(addressComponents[2].long_name);
            city = addressComponents[2].long_name;
            local = addressComponents;
         //alert(address.city.short_name);
@@ -121,33 +119,9 @@
         wicon = weather.currently.icon;
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
-        
-        
-                    //Skycons
-            var icons = new Skycons({
-                    "color": "black"
-                }),
-
-                //The items in the array match the weather condiitons provided by Dark Sky.  In order to invoke the icons
-                //you must loop through the DOM to find the matching conditions
-                list = [
-            "clear-day", "clear-night", "partly-cloudy-day",
-            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-            "fog"],
-                i;
-
-            //Loop to search through classes to find weather type names
-            for (i = list.length; i--;) {
-                var weatherType = list[i],
-                    elements = document.getElementsByClassName(weatherType);
-                for (e = elements.length; e--;) {
-                    icons.set(elements[e], weatherType);
-                }
-            }
-            icons.play();
+                
         }
-        
-        
+                
     })  // end ajax
               
     
@@ -200,31 +174,12 @@
            $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(cels.currently.temperature) + " C</h1>");
            state = true;
        }
-        /*
-                        $("div.ville").append("<div class='endroit'>" + location + " </div>"+
-                                        "<div class='temp'>" + temp_c + " °C</div>"+
-                                        "<div> Temp. ressentie : "+tempRessentie+" °C</div>"+
-                                        "<div class='triangle'></div>"+
-                                        "<div class='icone'><img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif' alt='"+condition+"' title='"+condition+"'/></div>"+
-                                        "<div class='condition'>"+condition+"</div>"+
-                                        "<div>Vent : "+vent_kmh+" km/h</div>"+
-                                        "<div>Rafales : "+rafales+" km/h</div>"+
-                                        "<div>Visibilité : "+visibilite+" km</div>");
-                }
-        
-        */
-    //  $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
-  //      $("#joke").html(JSON.stringify(json));
-      //});      
-      //$.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
-    //     $("#joke").html(JSON.stringify(json));         
-    //  });
 
     });
       
 
 
-  });
+  });  // end document
 </script>
 
     <style>
