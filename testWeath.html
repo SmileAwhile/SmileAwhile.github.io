@@ -45,6 +45,18 @@
       
       navigator.geolocation.getCurrentPosition(success, error, options);
 
+
+
+    $("#getMessage").on("click", function(){
+        
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
+        $("#joke").html(JSON.stringify(json));
+      });      
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
+         $("#joke").html(JSON.stringify(json));         
+      });
+
+    });
       
             $.ajax({
   url: "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng,
@@ -54,18 +66,6 @@
       console.log(data);
   }
 });
-
-
-    $("#getMessage").on("click", function(){
-
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
-        $("#joke").html(JSON.stringify(json));
-      });      
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
-         $("#joke").html(JSON.stringify(json));         
-      });
-
-    });
 
   });
 </script>
