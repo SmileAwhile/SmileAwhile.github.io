@@ -240,25 +240,15 @@
   </div>
   <div class = "parent row text-center">
     <div class = "forecast child col-xs-12">
-          <script>
-    var icons = new Skycons({"color": "#fff"}),
-          list  = [
-            "clear-day", "clear-night", "partly-cloudy-day",
-            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-            "fog"
-          ],
-          i;
+<canvas id="icon1" width="128" height="128">
+    <script>
+          var skycons = new Skycons({"color": "pink"});
+  // on Android, a nasty hack is needed: {"resizeClear": true}
 
-      for(i = list.length; i--; ) {
-    var weatherType = list[i],
-        elements = document.getElementsByClassName( weatherType );
-    for (e = elements.length; e--;){
-        icons.set( elements[e], weatherType );
-    }
-}
-
-      icons.play();
-  </script>
+  // you can add a canvas by it's ID...
+  skycons.add("#icon1", Skycons.PARTLY_CLOUDY_DAY);
+    </script>
+        </canvas>
         <div class="row">
         <div class="col-xs-4">
             </div>
