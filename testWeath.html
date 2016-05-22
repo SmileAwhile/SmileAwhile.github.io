@@ -53,7 +53,9 @@
        }
     };
    request.send();
- };          
+ };
+      
+      
       
       var options = {
           enableHighAccuracy: true,
@@ -62,13 +64,17 @@
       };
       
       function success(pos) {
-          var crd = pos.coords;        
+          var crd = pos.coords;
+          
+
           
           lat = crd.latitude;
           lng = crd.longitude;
           fio = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng;
           map = "https://maps.googleapis.com/maps/api/geocode/json?latlng=+lat"+","+lng+"&key=AIzaSyBHTJAao4UVbF1btqTUhmsZjia1zhMJpAU"
-          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units      
+          fiosi = "https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng + "?units=si"; //units in 
+          displayLocation(lat, lng);
+          
           
          $.getJSON(fio, function(json) {
             console.log("SUCCESS");
@@ -91,14 +97,23 @@
             url: fio,
             dataType: 'jsonp',
             success: function(results) {
-
+                console.log(results);
         
                 // initialize weather object
                 weather = results;
         
+                console.log("weather: " + weather);
+                console.log("weather.currently : " + weather.currently);
+                console.log("weather.currently.temperature: " + weather.currently.temperature);
+                console.log("stringify()");
+                console.log("weather: " + JSON.stringify(weather));
+                console.log("weather.currently : " + JSON.stringify(weather.currently));
+                console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
+
                 // initialize icon value
                 wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
-                
+                console.log("wicon" + wicon);
+
                 // add weather and city info
                  $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
 
@@ -106,12 +121,16 @@
                 var skycons = new Skycons({"color": "aliceblue" });
 
                 skycons.add("icon1", wicon);
-                skycons.play();     
+                skycons.play();
+      
                 
         }
                 
-    })  // end ajax            
+    })  // end ajax
+              
     
+
+
               $.ajax({
                     url: fiosi,
                     dataType: 'jsonp',
@@ -144,6 +163,10 @@
       };
       
       navigator.geolocation.getCurrentPosition(success, error, options);
+      console.log("nav.geo" + navigator.geolaction);
+
+
+
 
 
     $("#units").on("click", function(){
@@ -156,7 +179,11 @@
            state = true;
        }
 
-    });    
+    });
+      
+
+
+
 
   });  // end document
 </script>
