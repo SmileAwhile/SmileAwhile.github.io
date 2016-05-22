@@ -13,6 +13,15 @@
 <script>
   $(document).ready(function() {
       
+      $.ajax({
+  url: "https://api.forecast.io/forecast/APIKEY/40.463487,17.248535",
+  dataType: "jsonp",
+  success: function (data) {
+      console.log('here');
+      console.log(data);
+  }
+});
+      
       var lat;
       var lng;
       
