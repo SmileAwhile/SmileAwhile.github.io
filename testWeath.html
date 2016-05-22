@@ -97,6 +97,16 @@
 });
 
 
+            $.ajax({
+  url: map,
+  dataType: "jsonp",
+  success: function (data) {
+      console.log('here');
+      console.log(data);
+      local = data;
+  }
+});
+
       });  
      
       
@@ -144,15 +154,7 @@
 
     });
       
-            $.ajax({
-  url: map,
-  dataType: "jsonp",
-  success: function (data) {
-      console.log('here');
-      console.log(data);
-      local = data;
-  }
-});
+
 
   });
 </script>
