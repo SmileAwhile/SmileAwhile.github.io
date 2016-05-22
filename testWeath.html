@@ -30,6 +30,7 @@
       var state = false;
       var map;
       var local;
+      var city;
       
       
        function displayLocation(latitude,longitude){
@@ -53,6 +54,8 @@
              }
            }
            alert(addressComponents[2].long_name);
+           city = addressComponents[2].long_name;
+           local = addressComponents;
         //alert(address.city.short_name);
        }
     };
@@ -114,7 +117,7 @@
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
         wicon = weather.currently.icon;
         
-         $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
+         $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
     }
               })
     
@@ -137,7 +140,7 @@
   success: function (data) {
       console.log('here');
       console.log(data);
-      local = data;
+  
   }
 });
 
