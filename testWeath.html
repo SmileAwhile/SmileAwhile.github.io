@@ -43,16 +43,16 @@
       
       navigator.geolocation.getCurrentPosition(success, error, options);
 
-      
+      e63d1cacfd57ffbbc60227c7aaaed2e3
   
  
 
     $("#getMessage").on("click", function(){
       // Only change code below this line.
-      $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&appid=e6c0402fd769b8a1c18b637bd3253f8b", function(json) {
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + long, function(json) {
         $("#joke").html(JSON.stringify(json));
       });      
-      $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=e6c0402fd769b8a1c18b637bd3253f8b", function(json) {          
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + long, function(json) {          
          $("#joke").html(JSON.stringify(json));         
       });
       // Only change code above this line.
