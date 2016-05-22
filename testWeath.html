@@ -53,9 +53,7 @@
        }
     };
    request.send();
- };
-      
-      
+ };    
       
       var options = {
           enableHighAccuracy: true,
@@ -64,9 +62,7 @@
       };
       
       function success(pos) {
-          var crd = pos.coords;
-          
-
+          var crd = pos.coords;         
           
           lat = crd.latitude;
           lng = crd.longitude;
@@ -85,10 +81,8 @@
         $.getJSON(fiosi, function(json) {
             console.log("SUCCES");
             $("#joke").html(JSON.stringify(json));
-            })
-         
-          
-          
+            })        
+                    
         .done(function() { console.log( "second success" ); })
         .fail(function() { console.log( "error" ); })
         .always(function() { console.log( "complete" ); });
@@ -97,22 +91,12 @@
             url: fio,
             dataType: 'jsonp',
             success: function(results) {
-                console.log(results);
         
                 // initialize weather object
-                weather = results;
-        
-                console.log("weather: " + weather);
-                console.log("weather.currently : " + weather.currently);
-                console.log("weather.currently.temperature: " + weather.currently.temperature);
-                console.log("stringify()");
-                console.log("weather: " + JSON.stringify(weather));
-                console.log("weather.currently : " + JSON.stringify(weather.currently));
-                console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
+                weather = results;        
 
                 // initialize icon value
                 wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
-                console.log("wicon" + wicon);
 
                 // add weather and city info
                  $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
@@ -121,16 +105,12 @@
                 var skycons = new Skycons({"color": "aliceblue" });
 
                 skycons.add("icon1", wicon);
-                skycons.play();
-      
+                skycons.play();     
                 
         }
                 
-    })  // end ajax
-              
+    })  // end ajax            
     
-
-
               $.ajax({
                     url: fiosi,
                     dataType: 'jsonp',
@@ -163,11 +143,6 @@
       };
       
       navigator.geolocation.getCurrentPosition(success, error, options);
-      console.log("nav.geo" + navigator.geolaction);
-
-
-
-
 
     $("#units").on("click", function(){
        
@@ -179,11 +154,7 @@
            state = true;
        }
 
-    });
-      
-
-
-
+    });  
 
   });  // end document
 </script>
@@ -230,8 +201,7 @@
       
       
   </div>
-  <div id="data" class = "row text-center">
-            
+  <div id="data" class = "row text-center">            
       
   </div>
   <div class = "parent row text-center">
