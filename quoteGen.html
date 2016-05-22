@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chuck Norris Motha Trucka!!!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+
+    
+
+<script>
+  $(document).ready(function() {
+
+    $("#getMessage").on("click", function(){
+      // Only change code below this line.
+  //    $.getJSON("http://api.icndb.com/jokes/random", function(json) {
+    //    $("#joke").html(JSON.stringify(json));
+    //  });      
+      $.getJSON("http://api.icndb.com/jokes/random", function(json) {
+          $("#joke").fadeOut(500, function() {
+            $(this).text(JSON.stringify(json.value.joke)).fadeIn(500);    
+          })
+          
+          $("a").attr("href", "https://twitter.com/intent/tweet?&text=" + JSON.stringify(json.value.joke));
+});
+      // Only change code above this line.
+    });
+
+  });
+</script>
+
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+        h1 {
+   
+        }
+        .parent {
+            position: relative;
+        }
+        .child {
+            position: absolute;
+            top: 50%;
+
+        }
+        .jokeCNT {
+            background-color: aliceblue;
+        }
+        #getMessage {
+
+        }
+        .buttons {
+            padding: 15px;
+        }
+        .icon {
+            font-size: 40px;
+        }
+        .sign {
+            color: aliceblue;
+        }
+    </style>
+    
+<body>    
+<div class="container-fluid">
+  <div class = "row text-center">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+  </div>
+  <div class = "row text-center">
+  </div>
+  <div class = "parent row text-center">
+    <div class = "child col-xs-12">
+        <div class="row">
+        <div class="col-xs-4">
+            </div>
+            <div class="jokeCNT col-xs-4">
+              <h1 id="joke">CLICK the button to start generating sweet, sweet Chuck Norris Jokes!</h1>
+                <div class="buttons row">
+                    <div class="col-xs-2"></div>
+                    <div class="icon col-xs-2">
+                        <a class="a" href="https://twitter.com/intent/tweet?"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+</div>
+                    <div class="col-xs-5"></div>
+                    <div class="col-xs-2">
+              <button id = "getMessage" class = "btn btn-primary">Get Quote</button>
+                    </div>
+                    <div class="col-xs-1"></div>
+                    
+                </div>
+                </div>
+            <div class="col-xs-4">
+                     </div>
+            <div class="col-xs-12 sign"><p class="text-center">created by Corey</p></div>
+            
+        </div>
+    </div>
+  </div>
+</div>
+    </body>
+    </html>
