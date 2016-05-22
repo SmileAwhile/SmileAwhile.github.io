@@ -45,6 +45,14 @@
         .done(function() { console.log( "second success" ); })
         .fail(function() { console.log( "error" ); })
         .always(function() { console.log( "complete" ); });
+          
+              $.ajax({
+    url: fio,
+    dataType: 'jsonp',
+    success: function(results){
+        console.log(results);
+    }
+});
 
           
       };
@@ -60,13 +68,7 @@
 
 
 
-    $.ajax({
-    url: fio,
-    dataType: 'jsonp',
-    success: function(results){
-        console.log(results);
-    }
-});
+
 
     $("#getMessage").on("click", function(){
         
