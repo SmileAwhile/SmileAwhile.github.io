@@ -89,7 +89,7 @@
           console.log("More or less " + crd.accuracy + " meters. ");
           displayLocation(lat, lng);
           
-          
+     /*     
          $.getJSON(fio, function(json) {
             console.log("SUCCESS");
             $("#joke").html(JSON.stringify(json));
@@ -100,35 +100,42 @@
             console.log("SUCCES");
             $("#joke").html(JSON.stringify(json));
             })
-            
+         */
+          
+          
         .done(function() { console.log( "second success" ); })
         .fail(function() { console.log( "error" ); })
         .always(function() { console.log( "complete" ); });
           
-              $.ajax({
-    url: fio,
-    dataType: 'jsonp',
-    success: function(results) {
-        console.log(results);
-        weather = results;
-        console.log("weather: " + weather);
-        console.log("weather.currently : " + weather.currently);
-        console.log("weather.currently.temperature: " + weather.currently.temperature);
-        console.log("stringify()");
-        console.log("weather: " + JSON.stringify(weather));
-        console.log("weather.currently : " + JSON.stringify(weather.currently));
-        console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
-        wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
-        console.log("wicon" + wicon);
+        $.ajax({
+            url: fio,
+            dataType: 'jsonp',
+            success: function(results) {
+                console.log(results);
         
-         $(".jokeCNT").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
+                // initialize weather object
+                weather = results;
         
-                        var skycons = new Skycons({"color": "blue"});
-  // on Android, a nasty hack is needed: {"resizeClear": true}
+                console.log("weather: " + weather);
+                console.log("weather.currently : " + weather.currently);
+                console.log("weather.currently.temperature: " + weather.currently.temperature);
+                console.log("stringify()");
+                console.log("weather: " + JSON.stringify(weather));
+                console.log("weather.currently : " + JSON.stringify(weather.currently));
+                console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
 
-  // you can add a canvas by it's ID...
-  skycons.add("icon1", wicon);
-        skycons.play();
+                // initialize icon value
+                wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
+                console.log("wicon" + wicon);
+
+                // add weather and city info
+                 $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
+
+                // add skycons
+                var skycons = new Skycons({"color": "blue"});
+
+                skycons.add("icon1", wicon);
+                skycons.play();
       
                 
         }
@@ -139,25 +146,25 @@
 
 
               $.ajax({
-    url: fiosi,
-    dataType: 'jsonp',
-    success: function(results){
-        console.log(results);
-        cels = results;
-        
-    }
-});
+                    url: fiosi,
+                    dataType: 'jsonp',
+                    success: function(results){
+                        console.log(results);
+                        cels = results;
+
+                    }
+                });
 
 
             $.ajax({
-  url: map,
-  dataType: "jsonp",
-  success: function (data) {
-      console.log('here');
-      console.log(data);
-  
-  }
-});
+                  url: map,
+                  dataType: "jsonp",
+                  success: function (data) {
+                      console.log('here');
+                      console.log(data);
+
+                  }
+                });
 
   }  // end success
      
@@ -179,10 +186,10 @@
     $("#units").on("click", function(){
        
        if (state) {
-            $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
+            $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
             state = false;
        } else {
-           $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + local[2].long_name + "<br>" + JSON.stringify(cels.currently.temperature) + " C</h1>");
+           $(".info").html("<h1>" + local[2].long_name + "<br>" + JSON.stringify(cels.currently.temperature) + " &deg;C</h1>");
            state = true;
        }
 
@@ -199,6 +206,9 @@
         body {
             background-color: cadetblue;
         }
+        .heading {
+            font-size: 120px;
+        }
         h1 {
    
         }
@@ -210,8 +220,8 @@
             top: 50%;
 
         }
-        .jokeCNT {
-            background-color: aliceblue;
+        .info {
+            
         }
         #getMessage {
 
@@ -230,25 +240,13 @@
 <body>    
 <div class="container-fluid">
   <div class = "row text-center">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <h1 class="heading">Local Weather App</h1>
+      <br><br><br><br><br><br><br><br>
+      
       
   </div>
   <div id="data" class = "row text-center">
-      
-      
-      <h1>yeah</h1>
-      
+            
       
   </div>
   <div class = "parent row text-center">
@@ -261,16 +259,14 @@
         <div class="row">
         <div class="col-xs-4">
             </div>
-            <div class="jokeCNT col-xs-4">
-              <h1 id="joke">click me</h1>
+            <div class="info col-xs-4">
+              <h1></h1>
                 <div class="buttons row">
                     <div class="col-xs-2"></div>
                     <div class="icon col-xs-2">
-                        <a class="a" href="https://twitter.com/intent/tweet?"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 </div>
                     <div class="col-xs-4"></div>
                     <div class="col-xs-2">
-              <button id = "getMessage" class = "btn btn-primary">Get Quote</button>
                     </div>
                     <div class="col-xs-2"></div>
                     
