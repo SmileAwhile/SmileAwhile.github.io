@@ -21,6 +21,7 @@
       var weather;
       var wicon;
       var cels;
+      var state = false
       
       var options = {
           enableHighAccuracy: true,
@@ -71,41 +72,10 @@
         console.log("weather.currently.temperature: " + JSON.stringify(weather.currently.temperature));
         wicon = weather.currently.icon;
         
-        var icons = new Skycons({"color": "#111"}),
-      list  = [
-        "clear-day", "clear-night", "partly-cloudy-day",
-        "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-        "fog"
-      ],
-      i;
-
-  for(i = list.length; i--; ) {
-var weatherType = list[i],
-    elements = document.getElementsByClassName( weatherType );
-      console.log(elements);
-for (e = elements.length; e--;){
-    icons.set( elements[e], weatherType );
-}
-}
-
-  icons.play();
-        
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + "</h1>");
     }
 });
 
-//HTML to append to document
-      var html =
-        '<div class="forecast-list"><ul class="list">' +
-        '<li class="item" id="day">' + forecastDay + '</li>' +
-                          //The canvas tag is where the SKYCON should show up
-        '<li class="item"><canvas class="' + forecastIcon + '" width="128" height="128"></canvas></li>' +
-        '<li class="item forecastTemp" id="max">' + forecastMax + '</li>' +
-        '<li class="item forecastTemp" id="min">' + forecastMin + '</li>' +
-        '</ul></div><br><br>';
-
-      //Append HTML to document
-      $('.forecast').append(html);
 
 
               $.ajax({
@@ -136,10 +106,14 @@ for (e = elements.length; e--;){
 
 
     $("#units").on("click", function(){
-        
-        
-        $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(cels.currently.temperature) + "</h1>");
-        
+       
+       if (state) {
+            $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + "</h1>");
+            state = false;
+       } else {
+           $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(cels.currently.temperature) + "</h1>");
+           state = true;
+       }
         /*
                         $("div.ville").append("<div class='endroit'>" + location + " </div>"+
                                         "<div class='temp'>" + temp_c + " °C</div>"+
