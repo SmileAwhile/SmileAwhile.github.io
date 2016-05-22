@@ -48,14 +48,14 @@
  
 
     $("#getMessage").on("click", function(){
-      // Only change code below this line.
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + long, function(json) {
+
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {
         $("#joke").html(JSON.stringify(json));
       });      
-      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + long, function(json) {          
+      $.getJSON("https://api.forecast.io/forecast/e63d1cacfd57ffbbc60227c7aaaed2e3/" + lat + "," + lng, function(json) {          
          $("#joke").html(JSON.stringify(json));         
       });
-      // Only change code above this line.
+
     });
 
   });
