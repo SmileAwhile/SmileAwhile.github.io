@@ -68,7 +68,7 @@
               $.ajax({
     url: fio,
     dataType: 'jsonp',
-    success: function(results){
+    success: function(results) {
         console.log(results);
         weather = results;
         console.log("weather: " + weather);
@@ -81,7 +81,7 @@
         wicon = weather.currently.icon;
         
          $(".jokeCNT").html("<img src='http://icons-ak.wxug.com/i/c/k/"+wicon+".gif'></i><h1>" + JSON.stringify(weather.currently.temperature) + " F</h1>");
-    }
+    };
     
     
 
