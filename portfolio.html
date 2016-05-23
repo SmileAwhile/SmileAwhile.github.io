@@ -10,27 +10,27 @@
     <script>
 $(document).ready(function() {
     $(".portfolio").click(function() {
-        $(".portfolio").css("background-color", "#CCC")
+        $(".portfolio").css("background-color", "gainsboro")
         $(".portfolio").css("color", "#44A")
-        $(".about").css("background-color", "#44A")
+        $(".about").css("background-color", "midnightblue")
         $(".about").css("color", "#C80")
-        $(".contact").css("background-color", "#44A")
+        $(".contact").css("background-color", "midnightblue")
         $(".contact").css("color", "#C80")
     })
     $(".about").click(function() {
-        $(".about").css("background-color", "#CCC")
+        $(".about").css("background-color", "gainsboro")
         $(".about").css("color", "#44A")
-        $(".portfolio").css("background-color", "#44A")
+        $(".portfolio").css("background-color", "midnightblue")
         $(".portfolio").css("color", "#C80")
-        $(".contact").css("background-color", "#44A")
+        $(".contact").css("background-color", "midnightblue")
         $(".contact").css("color", "#C80")
     })
     $(".contact").click(function() {
-        $(".contact").css("background-color", "#CCC")
+        $(".contact").css("background-color", "gainsboro")
         $(".contact").css("color", "#44A")
-        $(".about").css("background-color", "#44A")
+        $(".about").css("background-color", "midnightblue")
         $(".about").css("color", "#C80")
-        $(".portfolio").css("background-color", "#44A")
+        $(".portfolio").css("background-color", "midnightblue")
         $(".portfolio").css("color", "#C80")
     })
     $('a[href ^= "#"]').on('click', function(e) {
@@ -59,7 +59,7 @@ $(document).ready(function() {
 <style>
     
 body {
-    background-color: #44A;
+    background-color: midnightblue;
     margin: 0 -10%;
 }
 
@@ -76,13 +76,13 @@ body {
     border: none;
     border-color: #44A;
     color: #44A;
-    background-color: #CCC;
+    background-color: gainsboro;
 }
 
 .portfolio {
     width: 100px;
     height: 50px;
-    background-color: #44A;
+    background-color: midnightblue;
     border: none;
     color: #C80;
     border-color: #44A;
@@ -91,7 +91,7 @@ body {
 .contact {
     width: 100px;
     height: 50px;
-    background-color: #44A;
+    background-color: midnightblue;
     border: none;
     color: #C80;
     border-color: #44A;
@@ -103,20 +103,21 @@ body {
 }
 
 .margins {
-    background-color: #CCC;
+    background-color: darkslategray;
 }
 
 .page {
 }
 
 .top {
-    background-color: #A4A;
+    background-color: darkcyan;
     margin: 0 20%;
     padding: 60px 0 40px 40px;
+    color: darkorange;
 }
 
 .mid {
-    background-color: #999;
+    background-color: #44A;
     margin: 0 20%;
     padding: 20px 10px;
 }
@@ -125,12 +126,18 @@ body {
     background-color: #FFF;
     margin: 0 20%;
     padding: 20px 10px;
+    font-family:  lucida sans typewriter;
 }
 
 .foot {
-    background-color: #999;
-    padding: 50px 10%;
+    background-color: darkcyan;
+    padding: 0px 10%;
     text-align: center;
+    color: coral;
+    margin: -20px 0 0 0;
+}
+.foot a{
+    color: azure;
 }
 
 .smallerImg {
@@ -174,6 +181,18 @@ body {
 .padded {
     padding: 20px;
 }
+    #Portfolio {
+        font-family: copperplate;
+        font-weight: bolder;
+        font-size: 50px;
+        color: lavender;
+        margin-bottom: -20px;
+    }
+    .signed {
+        color: #C80;
+        margin: -10px;
+        
+    }
 </style>
 <body>
     <div class="outermost container-fluid">
@@ -250,7 +269,7 @@ body {
             "https://github.com/SmileAwhile"><i aria-hidden="true" class=
             "fa fa-git-square"></i></a></h1>
         </div>
-        <h2 class="centered padded">This page was made by me in 2016.</h2>
+        <h2 class="centered padded signed">This page was made by me in 2016.</h2>
     </div>'
 </body>
 </html>
