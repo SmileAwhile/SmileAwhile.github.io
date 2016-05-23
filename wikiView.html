@@ -2,22 +2,21 @@
 <html>
 <head>
 <title>Wikipedia Viewer</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    
 
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {   
         
-        $("#takeAction").submit(function (event) {
-            $("#search").trigger("click");
+        $("#takeAction").submit(function(event) {
             event.preventDefault();
-        }) 
-
-   
-                      
+        })
+                               
                       
         $("#search").on('click', function() {
             
@@ -27,27 +26,25 @@
             var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?";
             var results;
             
-            $.ajax( {
-                url: remoteUrlWithOrigin,
-                data: queryData,
-                dataType: 'json',
-                type: 'POST',
-                headers: { 'Api-User-Agent': 'Example/1.0' },
-                success: function(data) {
-                    $(".middle").html(JSON.stringify(data));
-                    console.log(JSON.stringify(data));
+            if (queryData != "") {  
+                
+                $(".middle").html("");
+                
+                $.getJSON("http://en.wikipedia.org/w/api.php?action=opensearch&search="+queryData+"&format=json&callback=?", function(data) {
+              
                     results = data;
-                }
-            } );
+                                            
+                    for (var i=0; i<10; i++) {
+                        $(".middle").append("<a href='"+JSON.stringify(results[3][i]).replace(/\"/g, "")+"'><div class='result'><h3>"+JSON.stringify(results[1][i])+"</h3><h4>"+JSON.stringify(results[2][i])+"</h4></div></a><div><h4></h4></div>");
+                                       
+                    }
+                
+                }); // end json       
+            }
             
-            
-            $(".middle").html(JSON.stringify(results));
-            console.log(JSON.stringify(results));
-    } )
-             
-                      
-                      
-    });
+    } ) // end on search 
+                                                   
+}); // end document
     
     
 </script>
@@ -105,37 +102,9 @@
     .buttons {
         margin: 20px;
     }
-    .close {
-        border: 1px solid transparent;
-        background-color: transparent;
-        display: inline-block;
-        vertical-align: middle;
-        outline: 0;
-        cursor: pointer;
-    }
-    .close:after {
-        content: "X";
-        display: block;
-        width: 15px;
-        height: 15px;
-        position: absolute;
-        background-color: #FA9595;
-        z-index: 1;
-        right: 35px;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        padding: 2px;
-        border-radius: 50px;
-        text-align: center;
-        color: white;
-        font-weight: normal;
-        font-size: 12px;
-        box-shadow: 0 0 2px #E50F0F;
-        cursor: pointer;
-    }
-    .search-box:not(:valid) ~ close {
-        display: none;
+    .result {
+        background-color:royalblue;
+        color: azure;
     }
 </style>
 </head>
@@ -149,9 +118,9 @@
             <form id="takeAction">
                 <div class="row">
                 <input type="text" id="searchBox" name="search" required class="search-box" placeholder="Search...">
-                <button class="close" type="reset"></button>
                 </div>
-                <div class="buttons row">
+            </form>     
+            <div class="buttons row">
                 <div class="col-xs-5">
                 </div>
                 <div class="col-xs-2">
@@ -160,8 +129,6 @@
                 </div>
                 <div class="col-xs-5"></div>
                 </div>
-            </form>     
-
         </div>
         
     </div>
