@@ -68,6 +68,16 @@
         margin: 20px;
         color: darkolivegreen;
         font-family: fantasy;
+        border-bottom: 1px solid #000;
+    }
+    .heading h1 {
+        display: inline;
+        margin-left: 20px;
+
+    }
+    .heading span {
+        float: right;
+        color: darkslategrey;
     }
     ::-webkit-input-placeholder {
         color: cadetblue;
@@ -117,9 +127,12 @@
 <body>
     <div class="container-fluid">
     <div class="top">
-        <div class="heading text-center">
-            <h1>Wikipedia Viewer</h1>
-        </div>
+        <div class="heading text-center row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 h"><h1>Wikipedia Viewer</h1>
+            </div><div class="col-xs-4 s"><span><br>created by Corey in 2016</span>
+            </div>
+            </div>
         <div class="rounded">
             <form id="takeAction">
                 <div class="row">
