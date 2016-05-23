@@ -5,7 +5,8 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    
     
     <script>
         
@@ -13,21 +14,50 @@
             
             var streamers = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff", "brunofin", "comster404", "voyboy" ];
             
-            var streamData = [];
+            var streamData = []; 
+            
+            var offlineURL = "https://s-media-cache-ak0.pinimg.com/736x/69/7b/39/697b399ca80d1c688f7e517468e619c0.jpg"
+            
+            
             
             for (var i=0; i<streamers.length; i++) {                
                 
-                $.getJSON('https://api.twitch.tv/kraken/streams/' + streamers[i] + '?callback=?', function(data) {
-                    console.log(JSON.stringify(data));
+                $.getJSON('https://api.twitch.tv/kraken/streams/' + streamers[i])
+                .done(function(data) {
+                     
+                 //   console.log(JSON.stringify(data));
   
                     
                     
-                    console.log("data.stream" + JSON.stringify(data._links));
-                    console.log("data.stream.links" + data._links.self);
-                    console.log("data.stream.links.self" + JSON.stringify(data[0][0][0]));
+                //    console.log("data.stream" + JSON.stringify(data._links));
+              //      console.log("data.stream.links" + data._links.self);
+   //                 console.log("data.stream.links.self" + JSON.stringify(data[0][0][0]));
+                    
+                    if (data.stream !== null) {
+                     //   console.log(streamers[i] + " != null")
+                        
+                        $(".windowContents").append("<a href='"+data.stream.channel.url+"'><div class='row online user'><div class='icon col-xs-1'><img class='logo'  src='"+data.stream.channel.logo+"'></div><div class='col-xs-2'><h4 class='name'>"+data.stream.channel.display_name+"</h4></div><div class='status col-xs-9'><h4>"+data.stream.game+"</h4></div></div></a>");
+                        console.log(data.stream.game);
+                    } 
+                    else {
+                        
+                        console.log("printing out --------" + JSON.stringify(data));
+                        
+                         $(".windowContents").append("<a href='http://twitch.tv/"+data._links.channel.split("/")[5]+"'><div class='row offline user'><div class='icon col-xs-1'><img class='logo'  src='"+offlineURL+"'></div><div class='col-xs-2'><h4 class='name'>"+data._links.self.split("/")[5]+"</h4></div><div class='status col-xs-9'><h4>OFFLINE</h4></div></div></a>");
+                        
+                        
+                    }
                     
                     
-                });             
+                })
+                    .fail(function(error) {
+                    
+                        console.log("fail----------------------------------------------" + JSON.stringify(error.responseJSON.message).split("'")[1]);
+                    
+                        $(".windowContents").append("<div class='row offline user'><div class='icon col-xs-1'><img class='logo'  src='"+offlineURL+"'></div><div class='col-xs-2'><h4 class='name'>"+error.responseJSON.message.split("'")[1]+"</h4></div><div class='status col-xs-9'><h4>No Longer Available</h4></div></div>");
+                       // console.log(data.stream.game);
+                        
+                });          
             }
             
          
@@ -60,24 +90,37 @@
     }
     .online {
         background-color: darkseagreen;
-        border-top: 1px;
+        border-top: 5px;
         border-color: lightslategray;
         padding: 20px;
+        margin: 2px 0 0 0;
     }
     .online.user {
         color: steelblue;
     }
     .offline {
         background-color: steelblue;
-        border-top: 1px;
+        border-top: 5px;
         border-color: lightslategray;
         padding: 20px;
+        margin: 2px 0 0 0;
     }
     .offline.user {
         color: darkseagreen;
     }
     .windowContents .status{
         margin: -18px 0 0 0;
+    }
+    .logo {
+        width: 60px;
+    }
+    .name {
+        margin: 15px 0 0 30px;
+    }
+    .status {
+        padding: 25px 0 0 0;
+        text-align: center;
+    
     }
     
     
@@ -95,17 +138,13 @@
                     
                 </div>
                 <div class="windowContents">
-                    <div class="status"><h2 class="online user">user online</h2></div>
-                    <div class="status"><h2 class="online user">user online</h2></div>
-                    <div class="status"><h2 class="offline user">user offline</h2></div>
-                    <div class="status"><h2 class="offline user">user offline</h2></div>
-                    <div class="status"><h2 class="offline user">user offline</h2></div>
-
-                </div>
+                    
             </div>
             <div class="col-xs-2">
             </div>
         </div>            
     </div>   
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<div id="log"></div>
 </body>
 </html>
