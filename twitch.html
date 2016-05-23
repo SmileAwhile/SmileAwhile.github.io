@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <title>Twitch Coding Streamers</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    
+    <script>
+        
+        $(document).ready(function() {
+            
+            var streamers = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff", "brunofin", "comster404", "voyboy" ];
+            
+            var streamData = [];
+            
+            for (var i=0; i<streamers.length; i++) {                
+                
+                $.getJSON('https://api.twitch.tv/kraken/streams/' + streamers[i] + '?callback=?', function(data) {
+                    console.log(JSON.stringify(data));
+  
+                    
+                    
+                    console.log("data.stream" + JSON.stringify(data._links));
+                    console.log("data.stream.links" + data._links.self);
+                    console.log("data.stream.links.self" + JSON.stringify(data[0][0][0]));
+                    
+                    
+                });             
+            }
+            
+         
+            
+            
+            $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
+  console.log(data);
+});
+
+                
+       });
+    
+    
+    
+    </script>
+<style>
+    body {
+        background-color: lightslategray;
+    }
+    .windowHead {
+        background-color: darkslategray;
+
+    }
+    .windowHead h1 {
+        color: aliceblue;
+        font-size: 50px;
+        font-weight: bolder;
+        padding: 20px 0px 20px 50px;
+        margin: 20px 0 0 0;
+    }
+    .online {
+        background-color: darkseagreen;
+        border-top: 1px;
+        border-color: lightslategray;
+        padding: 20px;
+    }
+    .online.user {
+        color: steelblue;
+    }
+    .offline {
+        background-color: steelblue;
+        border-top: 1px;
+        border-color: lightslategray;
+        padding: 20px;
+    }
+    .offline.user {
+        color: darkseagreen;
+    }
+    .windowContents .status{
+        margin: -18px 0 0 0;
+    }
+    
+    
+</style>    
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="outerMost row">
+            <div class="col-xs-2">                
+            </div>
+            <div class="windowFrame col-xs-8">
+                <div class="windowHead">
+                    <h1>TWITCH STREAMERS</h1>
+                    
+                </div>
+                <div class="windowContents">
+                    <div class="status"><h2 class="online user">user online</h2></div>
+                    <div class="status"><h2 class="online user">user online</h2></div>
+                    <div class="status"><h2 class="offline user">user offline</h2></div>
+                    <div class="status"><h2 class="offline user">user offline</h2></div>
+                    <div class="status"><h2 class="offline user">user offline</h2></div>
+
+                </div>
+            </div>
+            <div class="col-xs-2">
+            </div>
+        </div>            
+    </div>   
+</body>
+</html>
