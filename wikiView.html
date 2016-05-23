@@ -14,7 +14,9 @@
     $(document).ready(function() {   
         
         $("#takeAction").submit(function(event) {
+            $("#search").trigger("click");
             event.preventDefault();
+            $("#searchBox").blur();
         })
                                
                       
@@ -38,8 +40,12 @@
                         $(".middle").append("<a href='"+JSON.stringify(results[3][i]).replace(/\"/g, "")+"'><div class='result'><h3>"+JSON.stringify(results[1][i])+"</h3><h4>"+JSON.stringify(results[2][i])+"</h4></div></a><div><h4></h4></div>");
                                        
                     }
+                    
+                    
                 
-                }); // end json       
+                }); // end json  
+                
+                $("#searchBox").val("");
             }
             
     } ) // end on search 
