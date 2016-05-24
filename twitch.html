@@ -55,7 +55,7 @@
                     
                     console.log(data.streams[0]);
                     for (var i=0; i<10; i++) {
-                        $("#popular").append("<a href='"+data.streams[9].channel.url+"'><div class='col-xs-3 well rightFrame row'><h4 class='col-xs-6'>"+data.streams[i].channel.display_name+"</h4><h4 class='col-xs-6'>"+data.streams[i].game+"</h4></div></a>");
+                        $("#popular").append("<a href='"+data.streams[i].channel.url+"'><div class='col-xs-3 well rightFrame row'><h4 class='col-xs-6'>"+data.streams[i].channel.display_name+"</h4><h4 class='col-xs-6'>"+data.streams[i].game+"</h4></div></a>");
                         
                     }  // end for loop
                
