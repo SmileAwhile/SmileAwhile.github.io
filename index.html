@@ -119,16 +119,21 @@ body {
     border-top: 20px;
     border-color: darkslategray;
 }
+.midOuter {
+    background-color: #44A;
+    margin: 0 20%;
+
+}
 
 .mid {
     background-color: #44A;
-    margin: 0 20%;
+
     padding: 20px 10px;
 }
 
 .bot {
     background-color: lavender;
-    margin: 0 20%;
+
     padding: 20px 10px;
     color: midnightblue;
     font-family:  lucida sans typewriter;
@@ -204,7 +209,9 @@ body {
         
     }
     .botMarg {
-        margin: 20px;
+        background-color: lavender;
+        margin: 20px 20%;
+        
         
     }
     input {
@@ -215,6 +222,9 @@ body {
     }
     ::-webkit-input-placeholder {
         color: cadetblue;
+    }
+    .well {
+        border: 3px solid midnightblue;
     }
 </style>
 <body>
@@ -229,12 +239,13 @@ body {
         </div>
         <div class="margins">
             <div class="page">
-                <div class="top row">
+                <div class="top well row">
                 <h2 class="col-xs-8" id="AboutMe">My name is Corey and I'm one
                 semester away from my A.S. in Computer Science. I'd really love
                 to do just about anything involving programming for a
                 career.</h2><img class="col-xs-4 smallerImg" src=
                 "https://avatars1.githubusercontent.com/u/19420817?v=3&s=460"></div>
+                <div class="well midOuter">
                 <div class="mid row">
                     <h1 class="centered col-xs-12" id="Portfolio">
                     PORTFOLIO</h1>
@@ -253,9 +264,10 @@ body {
                 <div class="mid row"><a href="http://smileawhile.github.io/twitch"><img class="col-xs-6" src="twitchy.png"></a>
                 <img class="col-xs-6" src=>
                 </div>
-                <div class="botMarg"></div>
+                </div>
+                <div class="botMarg well">
                 <div class="bot row">
-                   <h1 class="centered" id="ContactMe">CONTACT ME</h1><
+                   <h1 class="centered" id="ContactMe">CONTACT ME</h1>
                 </div>
                 <div class="bot row">
                     <div class="col-xs-6">
@@ -278,6 +290,7 @@ body {
                         profiles. Feel free to contact me there as well.</h3>
                         <h3>Thank you! Have a great day!</h3>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
