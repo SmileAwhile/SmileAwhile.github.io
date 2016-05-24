@@ -48,16 +48,18 @@
                 });  // end .fail             
                 
             } // end for loop     
-           
+                
+                // add popular streams
                 $.getJSON('https://api.twitch.tv/kraken/streams')
                 .done(function(data) {
                     
                     console.log(data.streams[0]);
-                    for (var i=0; i<=10; i++) {
+                    for (var i=0; i<10; i++) {
                         $("#popular").append("<a href='"+data.streams[9].channel.url+"'><div class='col-xs-3 well rightFrame row'><h4 class='col-xs-6'>"+data.streams[i].channel.display_name+"</h4><h4 class='col-xs-6'>"+data.streams[i].game+"</h4></div></a>");
-                    }
+                        
+                    }  // end for loop
                
-                });
+                });  // end .done
             
             
             
@@ -136,7 +138,8 @@
         margin: 0 0 0 5px;
     }
     .rightFrame {
-        margin: 20px 0 0 70px;
+        margin: 20px -10px 0 70px;
+        
     }
     .rightTitle {
         color: darkslateblue;
@@ -167,9 +170,9 @@
 <div id="log"></div> 
             <div id="popular">
             <div class="col-xs-3 well rightFrame row">
-                <h3 class="col-xs-3"></h3>
-                <h3 class="col-xs-6 text-center rightTitle">Popular streams</h3>
-                <h3 class="col-xs-3"></h3>
+                <h3 class="col-xs-2"></h3>
+                <h3 class="col-xs-8 text-center rightTitle">POPULAR STREAMS</h3>
+                <h3 class="col-xs-2"></h3>
             </div>  
             </div>
         </div>
