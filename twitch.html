@@ -26,13 +26,13 @@
                     if (data.stream !== null) {
 
                         // add to html
-                        $(".windowContents").append("<a href='"+data.stream.channel.url+"'><div class='row online user'><div class='icon col-xs-1'><img class='logo'  src='"+data.stream.channel.logo+"'></div><div class='col-xs-2'><h4 class='name'>"+data.stream.channel.display_name+"</h4></div><div class='status col-xs-9'><h4>"+data.stream.game+"</h4></div></div></a>");
+                        $(".windowContents").append("<a href='"+data.stream.channel.url+"'><div class='row well online user'><div class='icon col-xs-1'><img class='logo'  src='"+data.stream.channel.logo+"'></div><div class='col-xs-2'><h4 class='name'>"+data.stream.channel.display_name+"</h4></div><div class='status col-xs-9'><h4>"+data.stream.game+"</h4></div></div></a>");
 
                     } 
                     // if offline
                     else {
                        
-                         $(".windowContents").append("<a href='http://twitch.tv/"+data._links.channel.split("/")[5]+"'><div class='row offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+data._links.self.split("/")[5]+"</h4></div><div class='status col-xs-9'><h4>OFFLINE</h4></div></div></a>");
+                         $(".windowContents").append("<a href='http://twitch.tv/"+data._links.channel.split("/")[5]+"'><div class='row well offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+data._links.self.split("/")[5]+"</h4></div><div class='status col-xs-9'><h4>OFFLINE</h4></div></div></a>");
                         
                     }
                     
@@ -43,7 +43,7 @@
                     // if deactivated
                     .fail(function(error) {                    
                                             
-                        $(".windowContents").append("<div class='row offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+error.responseJSON.message.split("'")[1]+"</h4></div><div class='status col-xs-9'><h4>No Longer Available</h4></div></div>");
+                        $(".windowContents").append("<div class='row well offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+error.responseJSON.message.split("'")[1]+"</h4></div><div class='status col-xs-9'><h4>No Longer Available</h4></div></div>");
                          
                 });  // end .fail             
                 
@@ -73,7 +73,7 @@
     .windowHead {
         background-color: darkslategray;
         padding: 20px  0 0 0;
-        margin: 0 ;
+        margin: 0;
 
     }
     .windowHead h1 {
@@ -82,6 +82,7 @@
         font-weight: bolder;
         padding: 0px 0px 30px 50px;
         margin: 20px 0 0 0;
+
 
     }
     .online {
@@ -148,7 +149,7 @@
     <div class="container-fluid">
         <div class="outerMost row">
             <div class="windowFrame col-xs-8">
-                <div class="windowHead row">
+                <div class="windowHead well row">
                     <div class="col-xs-10">
                     <h1>TWITCH STREAMERS</h1>
                     </div>
