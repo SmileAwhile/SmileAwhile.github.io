@@ -168,13 +168,14 @@ body {
     width: 75%;
     font-size: 250%;
     margin: 5px;
+    background-color: lavender;
 }
 
 .message {
     border: none;
     border-bottom: 2px solid midnightblue;
     height: 50%;
-    width: 75%%;
+    width: 75%;
     margin: 0 10% 0 0;
     font-size: 250%;
     padding: 0 5px 250px;
@@ -219,6 +220,7 @@ body {
     }
     textarea {
         background-color: lavender;
+        resize: none;
     }
     ::-webkit-input-placeholder {
         color: cadetblue;
@@ -278,7 +280,8 @@ body {
                             <input class="input" id="name" placeholder="Name" type="text">
                             <input class="input" id="email" placeholder="Email Address" type="text"> 
                             <input class="input" id="phone" placeholder="Phone Number" type="text">
-                            <textarea rows="4" cols="25" class="message" id="message" placeholder="Message"></textarea>
+                            <textarea rows="4" cols="18" class="message" id="message" placeholder="Message"></textarea>
+                            <div rows="2"></div>
                             <button id="send">Send</button>
                         </form>
                     </div>
