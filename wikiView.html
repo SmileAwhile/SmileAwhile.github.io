@@ -37,7 +37,7 @@
                     results = data;
                                             
                     for (var i=0; i<10; i++) {
-                        $(".middle").append("<a href='"+JSON.stringify(results[3][i]).replace(/\"/g, "")+"'><div class='result'><h3>"+JSON.stringify(results[1][i])+"</h3><h4>"+JSON.stringify(results[2][i])+"</h4></div></a><div><h4></h4></div>");
+                        $(".middle").append("<a href='"+JSON.stringify(results[3][i]).replace(/\"/g, "")+"'><div class='well result'><h3>"+JSON.stringify(results[1][i])+"</h3><h4>"+JSON.stringify(results[2][i])+"</h4></div></a>");
                                        
                     }
                     
@@ -83,6 +83,7 @@
         color: cadetblue;
     }
     .middle {
+        margin: 100px;
         
     }
     .instructions {
@@ -121,6 +122,8 @@
     .result {
         background-color: lavenderblush;
         color: darkolivegreen;
+        margin: 70px;
+        
     }
 </style>
 </head>
