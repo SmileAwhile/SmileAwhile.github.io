@@ -37,14 +37,29 @@
                     }
                     
                     
+                    
+                    
                 }) // end .done
                     // if deactivated
                     .fail(function(error) {                    
                                             
                         $(".windowContents").append("<div class='row offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+error.responseJSON.message.split("'")[1]+"</h4></div><div class='status col-xs-9'><h4>No Longer Available</h4></div></div>");
                          
-                });  // end .fail
-            } // end for loop                   
+                });  // end .fail             
+                
+            } // end for loop     
+           
+                $.getJSON('https://api.twitch.tv/kraken/streams')
+                .done(function(data) {
+                    
+                    console.log(data.streams[0]);
+                    for (var i=0; i<=10; i++) {
+                        $("#popular").append("<a href='"+data.streams[9].channel.url+"'><div class='col-xs-3 well rightFrame row'><h4 class='col-xs-6'>"+data.streams[i].channel.display_name+"</h4><h4 class='col-xs-6'>"+data.streams[i].game+"</h4></div></a>");
+                    }
+               
+                });
+            
+            
             
        });  // end document
     
@@ -116,8 +131,15 @@
 
         
     }
-    
-    
+    .windowFrame {
+        margin: 0 0 0 5px;
+    }
+    .rightFrame {
+        margin: 20px 0 0 70px;
+    }
+    .rightTitle {
+        color: darkslateblue;
+    }
     
 </style>    
     
@@ -125,8 +147,6 @@
 <body>
     <div class="container-fluid">
         <div class="outerMost row">
-            <div class="col-xs-2">                
-            </div>
             <div class="windowFrame col-xs-8">
                 <div class="windowHead row">
                     <div class="col-xs-10">
@@ -139,11 +159,20 @@
                 <div class="windowContents">
                     
             </div>
-            <div class="col-xs-2">
-            </div>
+            <div class="col-xs-2">  
         </div>            
     </div>   
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-<div id="log"></div>
+<div id="log"></div> 
+            <div id="popular">
+            <div class="col-xs-3 well rightFrame row">
+                <h3 class="col-xs-3"></h3>
+                <h3 class="col-xs-6 text-center rightTitle">Popular streams</h3>
+                <h3 class="col-xs-3"></h3>
+            </div>  
+            </div>
+        </div>
+        </div>            
+        </div>
 </body>
 </html>
