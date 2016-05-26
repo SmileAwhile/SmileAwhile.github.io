@@ -18,10 +18,10 @@
     //  });      
       $.getJSON("http://api.icndb.com/jokes/random", function(json) {
           $("#joke").fadeOut(500, function() {
-            $(this).text(JSON.stringify(json.value.joke)).fadeIn(500);    
+            $(this).text('"' + json.value.joke.replace(/"|&quot;/g, "'") + '"').fadeIn(500);    
           })
           
-          $("a").attr("href", "https://twitter.com/intent/tweet?&text=" + JSON.stringify(json.value.joke));
+          $("a").attr("href", "https://twitter.com/intent/tweet?&text=" + json.value.joke.replace(/"|&quot;/g, "'"));
 });
       // Only change code above this line.
     });
