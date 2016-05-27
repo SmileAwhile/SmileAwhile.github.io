@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Corey's Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    
+    
+<script>
+    
+    $(document).ready(function() {
+        
+        var input = "";
+        var result = 0;
+        
+        function updateOut() {
+            $("#output").text(input);
+        }
+        
+        function updateResult() {
+            $("#output").text(result);
+            input = "";
+        }
+        
+        
+        
+        $("#AC").on('click', function() {
+            
+            input = "";
+            updateOut();
+            
+        });
+        
+        $("#CE").on('click', function() {
+            input = input.substring(0, input.length - 1);
+            updateOut();
+        });
+        
+        $("#mod").on('click', function() {
+            input += "%";
+            updateOut();
+        });
+        
+        $("#div").on('click', function() {
+            input += "/";
+            updateOut();
+        });
+        
+        $("#sev").on('click', function() {
+            input += "7";
+            updateOut();
+            
+        });
+        
+        $("#eight").on('click', function() {
+            input += "8";
+            updateOut();
+        });
+        
+        $("#nine").on('click', function() {
+            input += "9";
+            updateOut();
+        });
+        
+        $("#mult").on('click', function() {
+            input += "*";
+            updateOut();
+        });
+        
+        
+        $("#four").on('click', function() {
+            input += "4";
+            updateOut();
+        });
+        
+        
+        $("#five").on('click', function() {
+            input += "5";
+            updateOut();
+        });
+        
+        
+        $("#six").on('click', function() {
+            input += "6";
+            updateOut();
+        });
+        
+        
+        $("#min").on('click', function() {
+            input += "-";
+            updateOut();
+        });
+        
+        $("#one").on('click', function() {
+            input += "1";
+            updateOut();
+        });
+        
+        
+        $("#two").on('click', function() {
+            input += "2";
+            updateOut();
+        });
+        
+        
+        $("#three").on('click', function() {
+            input += "3";
+            updateOut();
+        });
+        
+        
+        $("#plus").on('click', function() {
+            input += "+";
+            updateOut();
+        });
+        
+        $("#dec").on('click', function() {
+            input += ".";
+            updateOut();
+        });
+        
+        
+        $("#zero").on('click', function() {
+            input += "0";
+            updateOut();
+        });
+        
+        
+        $("#ans").on('click', function() {
+            
+        });
+        
+        
+        $("#equals").on('click', function() {
+            result = eval(input);
+            updateResult();
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+    });  
+
+</script>
+    
+    
+<style>
+    body {
+        background-color: dimgray;
+    }
+    #wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        margin-top: 5%;
+        margin-bottom: auto;
+        height: 600px;
+        background-color: dimgray;
+    }
+    .outer {
+  
+    }
+    .window {
+        background-color: gainsboro;
+        font-family: monospace;
+        
+    }
+    .window h4 {
+        text-align: center;
+        color: black;
+
+    }
+    .output {
+        background-color: silver;
+        margin: 0 15px 0 22px;
+        color: black;
+        text-align: right;
+        padding: 1px;
+        border-width: thin;
+        border-color: darkgray;
+    }
+    .btn {
+        background-color: white;
+        margin: 5px;
+        border-color: darkgray;
+        width: 75px;
+        height: 75px;
+    }
+    .buttons {
+        text-align: center;
+        padding: 10px 0 0 30px;
+    }
+    .home {
+        margin: 20px 0 0 0;
+    }
+    
+    
+</style>
+    
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="home text-center"><a href="http://smileawhile.github.io/"><button class="btn">HOME</button></a></div>
+    <div id="wrapper" class="outer row">
+        <div class="window well">
+        <h4>Corey's Calculator</h4>
+            <div class="output well">
+            <h5 id="output">0</h5>
+            </div>
+            <div class="buttons row">
+                <button id="AC" class="btn col-xs-2">AC</button>
+             
+                <button id="CE" class="btn col-xs-2">CE</button>
+              
+                <button id="mod" class="btn col-xs-2">%</button>
+             
+                <button id="div" class="btn col-xs-2">/</button>
+            </div>
+            <div class="buttons row">
+                <button id="sev" class="btn col-xs-2">7</button>
+             
+                <button id="eight" class="btn col-xs-2">8</button>
+              
+                <button id="nine" class="btn col-xs-2">9</button>
+             
+                <button id="mult" class="btn col-xs-2">*</button>
+            </div>
+            <div class="buttons row">
+                <button id="four" class="btn col-xs-2">4</button>
+             
+                <button id="five" class="btn col-xs-2">5</button>
+              
+                <button id="six" class="btn col-xs-2">6</button>
+             
+                <button id="min" class="btn col-xs-2">-</button>
+            </div>
+            <div class="buttons row">
+                <button id="one" class="btn col-xs-2">1</button>
+             
+                <button id="two" class="btn col-xs-2">2</button>
+              
+                <button id="three" class="btn col-xs-2">3</button>
+             
+                <button id="plus" class="btn col-xs-2">+</button>
+            </div>
+            <div class="buttons row">
+                <button id="dec" class="btn col-xs-2">.</button>
+             
+                <button id="zero" class="btn col-xs-2">0</button>
+              
+                <button id="ans" class="btn col-xs-2">Ans</button>
+             
+                <button id="equals" class="btn col-xs-2">=</button>
+            </div>
+        </div>
+    </div>    
+
+    
+    
+    
+</div>
+    
+</body>
+</html>
