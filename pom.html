@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Pomodoro Clock</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/fd99a43c1b.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+        
+        
+        <script>
+        $(document).ready(function() {
+            
+            // code for timer graphic was repurposed from: http://thecodeplayer.com/walkthrough/make-gauge-charts-using-canvas-and-javascript
+            
+            window.onload = function(){
+                //canvas initialization
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+                //dimensions
+                var W = canvas.width;
+                var H = canvas.height;
+                //Variables
+                var degrees = 360.00;    // set degrees to 360 (full)
+                var new_degrees = 360.00;
+                var difference = 0;
+                var color = "lightgreen"; //green looks better to me
+                var bgcolor = "#222";
+                var text;
+                var animation_loop, redraw_loop; 
+                var timer = 1500.00;  // 25 min
+                var regen = 300.00;   // 5 min
+                var timeLeft = 0;
+                var regenLeft = 0;
+                // conversion had to be done for two seconds at a time as the animation takes two seconds
+                var convert = 720.00 / timer;  // convert time decrement to degrees
+                var regConv = 720.00 / regen;  // convert time increment to degrees
+                var state = true;  // whether work or regen
+                
+                $("#workPlus").on('click', function() {  
+                    
+                    timer += 60;  // add to timer
+                    updateWork(); // update display
+                    
+                });
+                
+                $("#workMin").on('click', function() {
+                    
+                    if (timer > 60 ){
+                        timer -= 60;  // decrement from timer
+                        updateWork();  // update display                       
+                    }                                
+                });
+                
+                function updateWork() {
+                    $("#workLength").html(Math.floor(Math.floor(timer) / 60));  // update display with current minute value of timer
+                }
+                
+                $("#regPlus").on('click', function() {
+                    
+                    regen += 60;  // add to regen
+                    updateRegen();  // update display
+                    
+                });
+                
+                $("#regMin").on('click', function() {
+                    
+                    if (regen > 60 ){
+                        regen -= 60;  // decriment from regen
+                        updateRegen();    // update display 
+                    }                                
+                });
+                
+                function updateRegen() {
+                    $("#regenLength").html(Math.floor(Math.floor(regen) / 60));  // update display with current minute value of regen
+                }
+                
+
+                function init()
+                {
+                    //Clear the canvas everytime a chart is drawn
+                    ctx.clearRect(0, 0, W, H);
+
+                    //Background 360 degree arc
+                    ctx.beginPath();
+                    ctx.strokeStyle = bgcolor;
+                    ctx.lineWidth = 30;
+                    ctx.arc(W/2, H/2, 100, 0, Math.PI*2, false); //you can see the arc now
+                    ctx.stroke();
+
+                    //gauge will be a simple arc
+                    //Angle in radians = angle in degrees * PI / 180
+                    var radians = degrees * Math.PI / 180;
+                    ctx.beginPath();
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 30;
+                    //The arc starts from the rightmost end. If we deduct 90 degrees from the angles
+                    //the arc will start from the topmost end
+                    ctx.arc(W/2, H/2, 100, 0 - 90*Math.PI/180, radians - 90*Math.PI/180, false); 
+                    //you can see the arc now
+                    ctx.stroke();
+
+                    //Lets add the text
+                    ctx.fillStyle = color;
+                    ctx.font = "50px bebas";
+                    if (state) {
+                        $(".status").html("<h1>Working...</h1>");
+                        timeLeft = Math.floor(degrees * 2 / convert);  // total seconds
+                        minutes = timeLeft / 60;  // minutes
+                        if (timeLeft - Math.floor(minutes) * 60 < 10) {  // if less than 10 seconds left in the current minute
+                            text = Math.floor(minutes) + ":0" + (timeLeft - Math.floor(minutes) * 60);    // update display with min and sec adding in 0 before single digit second
+                        } else {                         
+                        text = Math.floor(minutes) + ":" + (timeLeft - Math.floor(minutes) * 60);   // update display with minutes and seconds
+                        }
+                    }
+                    else {
+                        $(".status").html("<h1>REGENERATING!!!</h1>");
+                        regenLeft = Math.floor(degrees * 2 / regConv);   // total seconds
+                        regMin = regenLeft / 60;  // minutes
+                        if (regenLeft - Math.floor(regMin) * 60 < 10){  // if less than 10 seconds left in the current minute
+                            text = Math.floor(regMin) + ":0" + (regenLeft - Math.floor(regMin) * 60); // update display with min and sec adding in 0 before single digit second
+                        } else {                            
+                        text = Math.floor(regMin) + ":" + (regenLeft - Math.floor(regMin) * 60);  // update display
+                        }
+                    }
+                    //Lets center the text
+                    //deducting half of text width from position x
+                    text_width = ctx.measureText(text).width;
+                    //adding manual value to position y since the height of the text cannot
+                    //be measured easily. There are hacks but we will keep it manual for now.
+                    ctx.fillText(text, W/2 - text_width/2, H/2 + 15);
+                }
+
+                function draw()
+                {
+                    //Cancel any movement animation if a new chart is requested
+                    if(typeof animation_loop != undefined) clearInterval(animation_loop);
+
+                    //random degree from 0 to 360
+                    new_degrees = 360;                      // left over
+                    difference = new_degrees - degrees;     // left over
+                    //This will animate the gauge to new positions
+                    //The animation will take 1 second
+                    //time for each frame is 1sec / difference in degrees
+                    animation_loop = setInterval(animate_to, 1000);
+                }
+
+                //function to make the chart move to new degrees
+                function animate_to()
+                {
+                    if ( state ) {  // if working
+                        clearInterval(animation_loop);
+                        degrees = degrees - convert; // subtract the equivalent amount of degrees in seconds 
+                        if (degrees < 1) {  // if degrees less than one (empty)
+                            state = false;   // switch to regen
+                        }
+                        
+                    }
+                    else {
+                        clearInterval(animation_loop);
+                        degrees = degrees + regConv;  // add the equivalent amount of degrees in seconds
+                        if (degrees > 359) {  // if degrees greater than 359 (full)
+                            state = true;  // switch to work
+                        }
+                    }
+                     
+
+                    init();
+                }
+
+                //Lets add some animation for fun
+                draw();
+                redraw_loop = setInterval(draw, 2000); //Draw a new chart every 2 seconds
+                
+                
+                $("#reset").on('click', function() {  // reset timer
+                    degrees = 360.00;               // degrees back to 360 (full)
+                    convert = 720.00 / timer;       // redo timer conversion
+                    regConv = 720.00 /regen;        // redo regen conversion
+                    
+                });
+
+
+
+
+
+            }
+           
+            
+            
+            
+        });
+        
+        </script>
+        <style>
+           
+            body {
+                background: #333;
+            }
+            /*Centering the gauge*/
+            #canvas {
+                display: block;
+                width: 300px;
+                margin: 100px auto;
+            }
+            /*Custom font for numbers*/
+            @font-face {
+                font-family: "bebas";
+                src: url("http://thecodeplayer.com/uploads/fonts/BebasNeue.otf");
+            }
+            .status {
+                color: lightgreen;
+                text-align: center;
+            }
+            .btn {
+                width: 150px;
+                height: 75px;
+                background-color: #333;
+                outline: none;
+                border: none;
+            }
+            .btn:hover {
+                color: ghostwhite;
+            }
+            .btn:focus {
+                border-color: #333;
+                color: ghostwhite;
+                border: none;
+                outline: none;
+            }
+            .regen {
+                color: white;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+            }
+            .work {
+                color: white;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+            }
+            .frame {
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                justify-content: center;
+                width: 900px;
+            }
+            .res {
+                color: white;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 60px;
+            }
+            #reset {
+                width: 50px;
+                height: 50px;
+            }
+        
+        
+        </style>
+        
+        
+	</head>
+	<body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <div class="status"></div>
+        <div class="row frame">
+            
+        <div class="regen col-xs-3 row">
+
+            <button id="regMin" class="btn col-xs-2">Regen Length -</button>
+            <h1 id="regenLength" class="col-xs-2">5</h1>
+            <button id="regPlus" class="btn col-xs-2">Regen Length +</button>
+
+            </div>
+            
+            <div class="res"><button id="reset" class="btn">RESET</button></div>
+            
+            <div class="work col-xs-3 row">
+
+            <button id="workMin" class="btn col-xs-2">Work Length -</button>
+            <h1 id="workLength" class="col-xs-2">25</h1>
+            <button id="workPlus" class="btn col-xs-2">Work Length +</button>
+
+         
+            </div>
+        </div>
+            <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<div id="log"></div> 
+	</body>
+</html>
