@@ -37,6 +37,10 @@
                 var regConv = 720.00 / regen;  // convert time increment to degrees
                 var state = true;  // whether work or regen
                 
+                // audio files
+                var workSound = new Audio("work.mp3");
+                var regenSound = new Audio("regen.mp3");
+                
                 $("#workPlus").on('click', function() {  
                     
                     timer += 60;  // add to timer
@@ -152,6 +156,7 @@
                         clearInterval(animation_loop);
                         degrees = degrees - convert; // subtract the equivalent amount of degrees in seconds 
                         if (degrees < 1) {  // if degrees less than one (empty)
+                            regenSound.play();
                             state = false;   // switch to regen
                         }
                         
@@ -160,6 +165,7 @@
                         clearInterval(animation_loop);
                         degrees = degrees + regConv;  // add the equivalent amount of degrees in seconds
                         if (degrees > 359) {  // if degrees greater than 359 (full)
+                            workSound.play();
                             state = true;  // switch to work
                         }
                     }
