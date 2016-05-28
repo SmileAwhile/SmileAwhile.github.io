@@ -32,9 +32,8 @@
                 var regen = 300.00;   // 5 min
                 var timeLeft = 0;
                 var regenLeft = 0;
-                // conversion had to be done for two seconds at a time as the animation takes two seconds
-                var convert = 720.00 / timer;  // convert time decrement to degrees
-                var regConv = 720.00 / regen;  // convert time increment to degrees
+                var convert = 360.00 / timer;  // convert time decrement to degrees
+                var regConv = 360.00 / regen;  // convert time increment to degrees
                 var state = true;  // whether work or regen
                 
                 // audio files
@@ -109,7 +108,7 @@
                     ctx.font = "50px bebas";
                     if (state) {
                         $(".status").html("<h1>Working...</h1>");
-                        timeLeft = Math.floor(degrees * 2 / convert);  // total seconds
+                        timeLeft = Math.floor(degrees / convert);  // total seconds
                         minutes = timeLeft / 60;  // minutes
                         if (timeLeft - Math.floor(minutes) * 60 < 10) {  // if less than 10 seconds left in the current minute
                             text = Math.floor(minutes) + ":0" + (timeLeft - Math.floor(minutes) * 60);    // update display with min and sec adding in 0 before single digit second
@@ -119,7 +118,7 @@
                     }
                     else {
                         $(".status").html("<h1>REGENERATING!!!</h1>");
-                        regenLeft = Math.floor(degrees * 2 / regConv);   // total seconds
+                        regenLeft = Math.floor(degrees / regConv);   // total seconds
                         regMin = regenLeft / 60;  // minutes
                         if (regenLeft - Math.floor(regMin) * 60 < 10){  // if less than 10 seconds left in the current minute
                             text = Math.floor(regMin) + ":0" + (regenLeft - Math.floor(regMin) * 60); // update display with min and sec adding in 0 before single digit second
@@ -146,7 +145,7 @@
                     //This will animate the gauge to new positions
                     //The animation will take 1 second
                     //time for each frame is 1sec / difference in degrees
-                    animation_loop = setInterval(animate_to, 1000);
+                    animation_loop = setInterval(animate_to, 1);
                 }
 
                 //function to make the chart move to new degrees
@@ -176,13 +175,13 @@
 
                 //Lets add some animation for fun
                 draw();
-                redraw_loop = setInterval(draw, 2000); //Draw a new chart every 2 seconds
+                redraw_loop = setInterval(draw, 1000); //Draw a new chart every 2 seconds
                 
                 
                 $("#reset").on('click', function() {  // reset timer
                     degrees = 360.00;               // degrees back to 360 (full)
-                    convert = 720.00 / timer;       // redo timer conversion
-                    regConv = 720.00 /regen;        // redo regen conversion
+                    convert = 360.00 / timer;       // redo timer conversion
+                    regConv = 360.00 /regen;        // redo regen conversion
                     
                 });
 
