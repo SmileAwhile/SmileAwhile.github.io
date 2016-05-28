@@ -99,7 +99,7 @@
                 wicon = JSON.stringify(weather.currently.icon).replace(/\"/g, "");
 
                 // add weather and city info
-                 $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
+                 $(".info").html("<h1>"+ local[2].long_name + "<br>" + Math.floor(weather.currently.temperature) + " &deg;F</h1>");
 
                 // add skycons
                 var skycons = new Skycons({"color": "deepskyblue" });
@@ -147,10 +147,10 @@
     $("#units").on("click", function(){
        
        if (state) {
-            $(".info").html("<h1>"+ local[2].long_name + "<br>" + JSON.stringify(weather.currently.temperature) + " &deg;F</h1>");
+            $(".info").html("<h1>"+ local[2].long_name + "<br>" + Math.floor(weather.currently.temperature) + " &deg;F</h1>");
             state = false;
        } else {
-           $(".info").html("<h1>" + local[2].long_name + "<br>" + JSON.stringify(cels.currently.temperature) + " &deg;C</h1>");
+           $(".info").html("<h1>" + local[2].long_name + "<br>" + Math.floor(cels.currently.temperature) + " &deg;C</h1>");
            state = true;
        }
 
