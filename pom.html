@@ -264,12 +264,13 @@
                 width: 50px;
             }
             #reset {
+                color: lightgreen;
                 width: 50px;
                 height: 50px;
                 cursor: pointer;
             }
             .home {
-                color: white;
+                color: skyblue;
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
@@ -278,9 +279,11 @@
             }
             .header {
                 text-align: center;
+                margin: 0 0 -15px 0;
             }
             #regMin {
                 cursor: pointer;
+                
             }
             #regPlus {
                 cursor: pointer;
@@ -290,8 +293,7 @@
             }
             #workPlus {
                 cursor: pointer;               
-            }
-        
+            }                  
         
         </style>
         
@@ -303,7 +305,7 @@
         <div class="row frame">
             
         <div class="regen col-xs-3 row">
-            <h5 class="header">Regen Length</h5>
+            <h5 class="header">&nbsp;&nbsp;Regen Length</h5>
 
             <h2 id="regMin" class="col-xs-2">-</h2>
             <h2 id="regenLength" class="col-xs-2">5</h2>
@@ -313,11 +315,11 @@
             
             <div class="res">
                 <h4 id="reset">RESET</h4>
-                <a href="http://smileawhile.github.io/"><h4 class="home">HOME</h4></a>
+                
             </div>
             
             <div class="work col-xs-3 row">
-                <h5 class="header">Work Length</h5>
+                <h5 class="header">&nbsp;&nbsp;&nbsp;&nbsp;Work Length</h5>
 
             <h2 id="workMin" class="col-xs-2">-</h2>
             <h2 id="workLength" class="col-xs-2">25</h2>
@@ -326,6 +328,7 @@
          
             </div>
         </div>
+        <div class="row"><a href="http://smileawhile.github.io/"><h4 class="home">HOME</h4></a></div>
             <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 <div id="log"></div> 
 	</body>
