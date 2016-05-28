@@ -202,6 +202,7 @@
            
             body {
                 background: #333;
+                 font-family: "Brush Script MT", cursive;
             }
             /*Centering the gauge*/
             #canvas {
@@ -212,7 +213,7 @@
             /*Custom font for numbers*/
             @font-face {
                 font-family: "bebas";
-                src: url("http://thecodeplayer.com/uploads/fonts/BebasNeue.otf");
+                src: url("http://thecodeplayer.com/uploads/fonts/BebasNeue.otf" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous" );
             }
             .status {
                 color: lightgreen;
@@ -239,21 +240,21 @@
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
-                width: 400px;
+                width: 140px;
             }
             .work {
                 color: white;
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
-                width: 400px;
+                width: 140px;
             }
             .frame {
                 margin-left: auto;
                 margin-right: auto;
                 display: flex;
                 justify-content: center;
-                width: 900px;
+                width: 300px;
             }
             .res {
                 color: white;
@@ -265,6 +266,7 @@
             #reset {
                 width: 50px;
                 height: 50px;
+                cursor: pointer;
             }
             .home {
                 color: white;
@@ -273,6 +275,21 @@
                 margin-right: auto;
                 width: 50px;    
                 height: 50px;
+            }
+            .header {
+                text-align: center;
+            }
+            #regMin {
+                cursor: pointer;
+            }
+            #regPlus {
+                cursor: pointer;
+            }
+            #workMin {
+                cursor: pointer;
+            }
+            #workPlus {
+                cursor: pointer;               
             }
         
         
@@ -286,23 +303,25 @@
         <div class="row frame">
             
         <div class="regen col-xs-3 row">
+            <h5 class="header">Regen Length</h5>
 
-            <button id="regMin" class="btn col-xs-2">Regen Length -</button>
-            <h1 id="regenLength" class="col-xs-2">5</h1>
-            <button id="regPlus" class="btn col-xs-2">Regen Length +</button>
+            <h2 id="regMin" class="col-xs-2">-</h2>
+            <h2 id="regenLength" class="col-xs-2">5</h2>
+            <h2 id="regPlus" class="col-xs-2">&nbsp;+</h2>
 
             </div>
             
             <div class="res">
-                <button id="reset" class="btn">RESET</button>
-                <a href="http://smileawhile.github.io/"><button class="home btn">HOME</button></a>
+                <h4 id="reset">RESET</h4>
+                <a href="http://smileawhile.github.io/"><h4 class="home">HOME</h4></a>
             </div>
             
             <div class="work col-xs-3 row">
+                <h5 class="header">Work Length</h5>
 
-            <button id="workMin" class="btn col-xs-2">Work Length -</button>
-            <h1 id="workLength" class="col-xs-2">25</h1>
-            <button id="workPlus" class="btn col-xs-2">Work Length +</button>
+            <h2 id="workMin" class="col-xs-2">-</h2>
+            <h2 id="workLength" class="col-xs-2">25</h2>
+            <h2 id="workPlus" class="col-xs-2">&nbsp;&nbsp;+</h2>
 
          
             </div>
