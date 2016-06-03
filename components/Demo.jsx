@@ -3,9 +3,8 @@ ReactDOM.render(
 				var text1 = $("#textInput").val();
 
 					marked(text1);
-	})
+	}),
 
-			document.getElementById('test')
+	document.getElementById('test')
 
-
-			);
+);
