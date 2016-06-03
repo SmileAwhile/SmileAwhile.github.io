@@ -15,13 +15,15 @@ marked.setOptions({
 var markdownPreview = React.createClass ({
 	render: function() {
 		return (
-			marked(text)
+			console.log("text = ", text);
+			marked(text);
 		);
 	}
 });
 
 $('#textInput').bind('input propertychange', function() {
 			var text1 = $("#textInput").val();
+			console.log("text1 = ", text1);
 
 			ReactDOM.render(
 				<markdownPreview text = {text1} />,
