@@ -33,6 +33,17 @@ console.log(marked('I am using __markdown__.'));
  <div id="test"></div>
 
 <script src="components/Demo.jsx" type="text/babel"></script>
+<script>
+$('#textInput').bind('input propertychange', function() {
+			var text1 = $("#textInput").val();
+			console.log("text1 = ", text1);
+
+			ReactDOM.render(
+				<markdownPreview text = {text1} />,
+				document.getElementById('test')
+			);
+});
+</script>
 
 </body>
 
