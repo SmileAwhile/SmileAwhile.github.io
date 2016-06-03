@@ -19,13 +19,3 @@ var markdownPreview = React.createClass ({
 		);
 	}
 });
-
-$('#textInput').bind('input propertychange', function() {
-			var text1 = $("#textInput").val();
-			console.log("text1 = ", text1);
-
-			ReactDOM.render(
-				<markdownPreview text = {text1} />,
-				document.getElementById('test')
-			);
-});
