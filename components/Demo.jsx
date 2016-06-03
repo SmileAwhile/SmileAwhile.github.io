@@ -25,5 +25,6 @@ var Demo = React.createClass({
 
 			);
 	}
-	React.render(Demo, document.body);
+
 });
+	React.render(Demo, document.body);
