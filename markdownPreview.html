@@ -38,6 +38,11 @@ console.log(marked('I am using __markdown__.'));
         var text1 = $("#textInput").val();
         console.log(text1);
 
+        ReactDOM.render(
+          <markdownPreview text={text1} />,
+          document.getElementById('test')
+        );
+
   });
   </script>
 
