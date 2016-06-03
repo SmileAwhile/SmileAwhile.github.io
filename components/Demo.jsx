@@ -1,6 +1,5 @@
-var Demo = React.createClass({
-	render: function() {
-		return (
+ReactDOM.render(
+	
 			<div className="container">
 			<h1> heading</h1>
 			<h2>List</h2>
@@ -24,7 +23,4 @@ var Demo = React.createClass({
 			
 
 			);
-	}
 
-});
-	React.render(Demo, document.body);
