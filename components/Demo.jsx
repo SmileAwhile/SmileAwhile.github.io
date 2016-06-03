@@ -15,8 +15,7 @@ marked.setOptions({
 var markdownPreview = React.createClass ({
 	render: function() {
 		return (
-			console.log("text = ", text);
-			marked(text);
+			marked(text)
 		);
 	}
 });
