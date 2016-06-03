@@ -13,7 +13,7 @@ marked.setOptions({
 });
 
 $("#textInput").bin('input propertychange', function() {
-	var text1 = #('#textInput').val();
+	var text1 = ('#textInput').val();
 
 	ReactDOM.render(
 		<div>marked(text1)</div>,
