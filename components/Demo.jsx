@@ -19,7 +19,7 @@ marked.setOptions({
 
 				ReactDOM.render(
 
-					marked(text1),
+					marked("**BOLD**"),
 
 					document.getElementById('test')
 
