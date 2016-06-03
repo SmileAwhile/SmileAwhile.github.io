@@ -15,6 +15,6 @@ marked.setOptions({
 $('#textInput').bind('input propertychange', function() {
 			var text1 = $("#textInput").val();
 
-			document.getElementById('content').innerHTML =
+			document.getElementById('test').innerHTML =
 				marked(text1);
 })
