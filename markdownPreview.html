@@ -25,25 +25,21 @@ console.log(marked('I am using __markdown__.'));
 
 </head>
 <body>
-    <textarea id="textInput" rows="10" cols="20" class="message" id="message" placeholder="Message"></textarea>
+  <textarea id="textInput" rows="10" cols="20" class="message" id="message" placeholder="Message"></textarea>
 
-<script src="https://fb.me/react-15.1.0.js"></script>
-<script src="https://fb.me/react-dom-15.1.0.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
- <div id="test"></div>
+  <script src="https://fb.me/react-15.1.0.js"></script>
+  <script src="https://fb.me/react-dom-15.1.0.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+   <div id="test"></div>
 
-<script src="components/Demo.jsx" type="text/babel"></script>
-<script>
-$('#textInput').bind('input propertychange', function() {
-			var text1 = $("#textInput").val();
-			console.log(text1);
+  <script src="components/Demo.jsx" type="text/babel"></script>
+  <script>
+  $('#textInput').bind('input propertychange', function() {
+        var text1 = $("#textInput").val();
+        console.log(text1);
 
-			ReactDOM.render(
-				<markdownPreview text = {text1} />,
-				document.getElementById('test')
-			);
-});
-</script>
+  });
+  </script>
 
 </body>
 
