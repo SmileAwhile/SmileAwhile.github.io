@@ -24,7 +24,7 @@ $('#textInput').bind('input propertychange', function() {
 			var text1 = $("#textInput").val();
 
 			ReactDOM.render(
-				<markdownPreview text = text1 />,
+				<markdownPreview text = {text1} />,
 				document.getElementById('test')
 			);
 });
