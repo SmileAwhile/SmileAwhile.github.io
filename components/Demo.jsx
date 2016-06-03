@@ -12,9 +12,19 @@ marked.setOptions({
 	smartypants: false
 });
 
+var markdownPreview = React.createClass ({
+	render: function() {
+		return (
+			marked(text)
+		);
+	}
+});
+
 $('#textInput').bind('input propertychange', function() {
 			var text1 = $("#textInput").val();
 
-			document.getElementById('test').innerHTML =
-				marked(text1);
-})
+			ReactDOM.render(
+				<markdownPreview text = text1 />,
+				document.getElementById('test')
+			);
+});
