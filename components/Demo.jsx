@@ -12,24 +12,11 @@ marked.setOptions({
 	smartypants: false
 });
 
+$("#textInput").bin('input propertychange', function() {
+	var text1 = #('#textInput').val();
 
-
-
-
-ReactDOM.render(
-
-	<script>
-
-	$('#textInput').bind('input propertychange', function() {
-				var text1 = $("#textInput").val();
-
-				document.getElementById('content').innerHTML =
-					marked(text1);
-	});
-
-	</script>
-	<div id="content"></div>,
-
-	document.getElementById('test')
-
-);
+	ReactDOM.render(
+		<div>marked(text1)</div>,
+		document.getElementById('test')
+	);
+});
