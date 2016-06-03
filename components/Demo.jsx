@@ -14,16 +14,22 @@ marked.setOptions({
 
 
 
+
+
+ReactDOM.render(
+
+	<script>
+
 	$('#textInput').bind('input propertychange', function() {
 				var text1 = $("#textInput").val();
 
-				ReactDOM.render(
-
-					marked("**BOLD**"),
-
-					document.getElementById('test')
-
-				);
-
-
+				document.getElementById('content').innerHTML =
+					marked(text1);
 	})
+
+	</script>
+	<div id="content"></div>,
+
+	document.getElementById('test')
+
+);
