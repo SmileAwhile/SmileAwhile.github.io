@@ -25,7 +25,7 @@ ReactDOM.render(
 
 				document.getElementById('content').innerHTML =
 					marked(text1);
-	})
+	});
 
 	</script>
 	<div id="content"></div>,
