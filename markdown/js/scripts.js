@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-require("./module1.js");
+import MarkdownPrev from "./MarkdownPrev.js";
 
-const app = document.getElementById('test');
+const app = document.getElementById('app');
+ReactDOM.render(<MarkdownPrev/>, app);
