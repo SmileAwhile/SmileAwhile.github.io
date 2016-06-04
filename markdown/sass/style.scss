@@ -1,6 +1,10 @@
 $ff: 'arial';
 $bg: #f2f2f2;
 
+div {
+	background: $bg;
+	font-family: $ff;
+}
 body {
 	background: $bg;
 	font-family: $ff;

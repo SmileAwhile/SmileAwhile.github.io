@@ -4,7 +4,7 @@
 <title>SASS</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>
 <script>
@@ -25,12 +25,13 @@ console.log(marked('I am using __markdown__.'));
 
 </head>
 <body>
-  <textarea id="textInput" rows="10" cols="20" class="message" id="message" placeholder="Message"></textarea>
+  <div class="fluid-container row">
+  <textarea id="textInput" class="col-xs-4" rows="40" cols="50" class="message" id="message" placeholder="Message"></textarea>
 
 
-   <div id="test"></div>
+   <div id="test" class="col-xs-4"></div>
 <script src="../src/client.min.js"></script>
-
+</div>
 
 </body>
 
