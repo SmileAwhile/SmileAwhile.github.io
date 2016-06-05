@@ -1,0 +1,51 @@
+$ff: 'papyrus';
+$bg: #006400;
+
+body {
+	font-family: $ff;
+  padding: 50px
+}
+.user img {
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+	margin-top: -20px;
+}
+#app h1 {
+  text-align: center;
+	padding: 20px 0 0 0;
+}
+.user h1 {
+  display: inline-block;
+	margin-left: 10px;
+}
+.user {
+  border-bottom: thick solid darkslategrey;
+	border-left: thick solid darkslategrey;
+	border-right: thick solid darkslategrey;
+}
+.heading {
+	background: darkgreen;
+	color: khaki;
+	margin: -20px -20px 0;
+}
+.heading h1 {
+		font-size: 300%;
+}
+.well {
+
+}
+.number {
+	border-bottom: thick solid darkslategrey;
+	border-right: thick solid darkslategrey;
+
+}
+.thirty {
+	border-bottom: thick solid darkslategrey;
+	border-right: thick solid darkslategrey;
+	border-left: thick solid darkslategrey;
+}
+.time {
+	border-bottom: thick solid darkslategrey;
+	border-left: thick solid darkslategrey;
+}
