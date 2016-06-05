@@ -26,6 +26,11 @@ body {
   color: khaki;
   margin: -20px -20px 0; }
 
+.sign {
+  float: right;
+  text-align: right;
+  margin-right: 10px; }
+
 .heading h1 {
   font-size: 300%; }
 
