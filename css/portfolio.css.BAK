@@ -1,0 +1,156 @@
+body {
+    background-color: midnightblue;
+}
+
+.right {
+    margin: 0 0 0 60%;
+    padding: 20px;
+    color: #C80;
+    font-weight: 700;
+}
+
+.btnMarg {
+    margin: 5px;
+    padding: 5px;
+}
+
+.margins {
+    background-color: slategray;
+    padding: 10px 0px;
+    margin: 0 -15px;
+}
+
+.page {
+    padding 20px 0;
+}
+
+.top {
+    margin: 20px 20%;
+    padding: 60px 0 20px 40px;
+    color: midnightblue;
+    border-top: 20px;
+    border-color: darkslategray;
+    background: lavender;
+}
+
+.midOuter {
+    background-color: #44A;
+    margin: 0 20%;
+
+
+}
+
+.mid {
+    background-color: #44A;
+    margin: -19px;
+    padding: 20px 10px;
+}
+
+.bot {
+    background-color: lavender;
+    margin: -19px;
+    padding: 20px 10px;
+    color: midnightblue;
+    font-family:  lucida sans typewriter;
+}
+
+.foot {
+    background-color: darkslateblue;
+    padding: 0px 10%;
+    text-align: center;
+    color: lightcoral;
+    margin: -20px -15px;
+}
+.foot a{
+    color: lavender;
+}
+
+.smallerImg {
+    width: 30%;
+    border-color: #A4A;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.input {
+    border: none;
+    border-bottom: 2px solid midnightblue;
+    height: 50%;
+    width: 75%;
+    font-size: 250%;
+    margin: 5px;
+    background-color: lavender;
+}
+
+.message {
+    border: none;
+    border-bottom: 2px solid midnightblue;
+    height: 50%;
+    width: 75%;
+    margin: 0 10% 0 0;
+    font-size: 250%;
+    padding: 0 5px 250px;
+}
+
+#send {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-color: #FFF;
+    margin: 10px;
+
+    color: lavender;
+}
+
+.padded {
+    padding: 20px;
+}
+#Portfolio {
+    font-family: copperplate;
+    font-weight: bolder;
+    font-size: 50px;
+    color: lavender;
+    margin-bottom: -20px;
+}
+
+.signed {
+    color: #C80;
+    margin: -10px;
+
+}
+.botMarg {
+    background-color: lavender;
+    margin: 20px 20%;
+
+
+}
+input {
+    background-color: lavender;
+}
+textarea {
+    background-color: lavender;
+    resize: none;
+}
+::-webkit-input-placeholder {
+    color: cadetblue;
+}
+.well {
+    border: 3px solid midnightblue;
+}
+.previewpic {
+    border-radius: 5%;
+}
+.navbar-inverse {
+
+}
+.navbar-dark .navbar-toggle .icon-bar {
+  background-color: lavender;
+  color: lavender;
+}
+.navbar-dark .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+  color:#C80;
+}
