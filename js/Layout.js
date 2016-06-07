@@ -15,20 +15,33 @@ $(document).ready(function() {
         });
 
     });
-    $("#send").click(function(e) {
-            e.preventDefault();
-
-            var subject = $('#email').val();
-            var name = $('#name').val();
-            var phone = $('#phone').val();
-            var emailBody = $('#message').val();
-            window.location.assign("mailto:cjdunn11@gmail.com?subject="+name+"_"+subject+"_"+phone+"&body="+emailBody);
-   });
 });
+
+var subject;
+var name;
+var phone;
+var emailBody;
+var send;
 
 export default class Layout extends React.Component {
   constructor() {
     super();
+
+  }
+
+  handleSend() {
+    subject = $('#email').val();
+    name = $('#name').val();
+    phone = $('#phone').val();
+    emailBody = $('#message').val();
+
+    send= "mailto:cjdunn11@gmail.com?subject="+name+"_"+subject+"_"+phone+"&body="+emailBody;
+
+    $('<a href="'+send+'"></a>')[0].click()
+    send = "mailto:cjdunn11@gmail.com";
+    console.log(send);
+    forceUpdate();
+
   }
   render() {
     return (
@@ -116,7 +129,7 @@ export default class Layout extends React.Component {
                       <input class="input" id="phone" placeholder="Phone Number" type="text"/>
                       <textarea rows="4" cols="18" class="message" id="message" placeholder="Message"></textarea>
                       <div rows="2"></div>
-                      <button class="btn btn-primary" id="send">Send</button>
+                      <button onClick={this.handleSend.bind(this)} class="btn btn-primary" id="send">Send</button>
                   </form>
               </div>
               <div class="col-xs-6">
