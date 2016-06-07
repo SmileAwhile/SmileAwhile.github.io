@@ -66,15 +66,19 @@ export default class TopCampers extends React.Component {
   // render labels, buttons, and the array of html and object elements
   render() {
     return (
-      <div className="well">
-        <div class="heading">
-        <a href="http://smileawhile.github.io"><button class="btn btn-primary">Home</button></a>
-        <h1>Brownie Points Leaderboard</h1>
-        <button class="btn btn-danger" onClick={this.handleClick.bind(this)}>AllTime/Recent</button>
-        <span class="sign">Built with React and Sass by Corey Dunn in 2016</span>
+      <div>
+        <link rel="stylesheet" href="campers/css/style.css" />
+        <div className="well">
+          <div class="heading">
+          <a href="#/"><button class="btn btn-primary">Home</button></a>
+          <h1>Brownie Points Leaderboard</h1>
+          <button class="btn btn-danger" onClick={this.handleClick.bind(this)}>AllTime/Recent</button>
+          <span class="sign">Built with React and Sass by Corey Dunn in 2016</span>
+          </div>
+          <div class="row"><div class="number col-xs-1"><h1>#</h1></div><div class="user col-xs-5"><h1>Camper Name</h1></div><div class="thirty col-xs-3"><h1>Recent</h1></div><div class="time col-xs-3"><h1>All Time</h1></div></div>
+          <div className="output" dangerouslySetInnerHTML={{__html: this.state.data.join('')}}></div>
         </div>
-        <div class="row"><div class="number col-xs-1"><h1>#</h1></div><div class="user col-xs-5"><h1>Camper Name</h1></div><div class="thirty col-xs-3"><h1>Recent</h1></div><div class="time col-xs-3"><h1>All Time</h1></div></div>
-        <div className="output" dangerouslySetInnerHTML={{__html: this.state.data.join('')}}></div>
+        <a href="#/"><button class="btn btn-primary">Home</button></a>
       </div>
     );
   }

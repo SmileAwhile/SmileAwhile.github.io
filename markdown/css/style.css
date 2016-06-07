@@ -1,12 +1,12 @@
-div {
-  background: #f2f2f2;
-  font-family: "arial"; }
-
-body {
-  background: #f2f2f2;
-  font-family: "arial"; }
-
-.sign {
-  float: right; }
+#preview {
+  background: #f2f2f2; }
+  #preview div {
+    background: #f2f2f2;
+    font-family: "arial"; }
+  #preview body {
+    background: #f2f2f2;
+    font-family: "arial"; }
+  #preview .sign {
+    float: right; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,53 @@
+#preview {
+  background: burlywood; }
+  #preview .top {
+    padding: 20px;
+    background: burlywood; }
+  #preview .heading {
+    margin: 20px;
+    color: darkolivegreen;
+    font-family: fantasy;
+    border-bottom: 1px solid #000; }
+  #preview .heading h1 {
+    display: inline;
+    margin-left: 20px; }
+  #preview .heading span {
+    float: right;
+    color: darkslategrey; }
+  #preview ::-webkit-input-placeholder {
+    color: cadetblue; }
+  #preview .middle {
+    margin: 100px; }
+  #preview .instructions {
+    color: lavenderblush;
+    font-family: "monospace"; }
+  #preview input[type=text] {
+    width: 130px;
+    color: darkcyan;
+    box-sizing: border-box;
+    border: 2px solid #CCC;
+    border-radius: 20px;
+    border-color: cadetblue;
+    font-size: 16px;
+    background: burlywood;
+    background-image: url("searchicn.png");
+    background-size: contain;
+    background-position: 0;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out; }
+  #preview input[type=text]:focus {
+    width: 50%; }
+  #preview .rounded {
+    text-align: center; }
+  #preview .buttons {
+    margin: 20px; }
+  #preview .result {
+    background: lavenderblush;
+    color: darkolivegreen;
+    margin: 20px 70px; }
+  #preview .home {
+    text-align: left; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,54 @@
+#preview {
+    background: dimgray;
+
+  #wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+      margin-top: 5%;
+      margin-bottom: auto;
+      height: 600px;
+      background: dimgray;
+  }
+  .outer {
+
+  }
+  .window {
+      background: gainsboro;
+      font-family: monospace;
+
+
+  }
+  .window h4 {
+      text-align: center;
+      color: black;
+
+  }
+  .output {
+      background-color: silver;
+      margin: 0 15px 0 22px;
+      color: black;
+      text-align: right;
+      padding: 1px;
+      border-width: thin;
+      border-color: darkgray;
+  }
+  .btn {
+      background-color: white;
+      margin: 5px;
+      border-color: darkgray;
+      width: 75px;
+      height: 75px;
+  }
+  .buttons {
+      text-align: center;
+      padding: 10px 0 0 30px;
+  }
+  .home {
+      margin: 20px 0 0 0;
+  }
+  .well {
+    border: 1px solid darkgrey;
+  }
+
+}

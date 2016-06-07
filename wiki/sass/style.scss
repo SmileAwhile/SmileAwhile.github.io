@@ -1,0 +1,72 @@
+#preview {
+    background: burlywood;
+
+  .top {
+      padding: 20px;
+      background: burlywood;
+  }
+  .heading {
+      margin: 20px;
+      color: darkolivegreen;
+      font-family: fantasy;
+      border-bottom: 1px solid #000;
+  }
+  .heading h1 {
+      display: inline;
+      margin-left: 20px;
+
+  }
+  .heading span {
+      float: right;
+      color: darkslategrey;
+  }
+  ::-webkit-input-placeholder {
+      color: cadetblue;
+  }
+  .middle {
+      margin: 100px;
+
+  }
+  .instructions {
+      color: lavenderblush;
+      font-family: "monospace";
+  }
+  input[type=text] {
+    width: 130px;
+    color: darkcyan;
+    box-sizing: border-box;
+    border: 2px solid #CCC;
+    border-radius: 20px;
+    border-color: cadetblue;
+    font-size: 16px;
+    background: burlywood;
+    background-image: url('searchicn.png');
+    background-size: contain;
+    background-position: 0;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  input[type=text]:focus {
+      width: 50%;
+  }
+
+  .rounded {
+      text-align: center;
+
+  }
+  .buttons {
+      margin: 20px;
+  }
+  .result {
+      background: lavenderblush;
+      color: darkolivegreen;
+      margin: 20px 70px;
+
+  }
+  .home {
+      text-align: left;
+  }
+
+}

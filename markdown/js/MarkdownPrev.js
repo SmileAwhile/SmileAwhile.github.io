@@ -35,13 +35,15 @@ export default class MarkdownPrev extends React.Component {
 	render() {
 		var value = this.state.currentValue;
 		return (
-			<div>
-			<div>
-			<textArea id="textInput" className="col-xs-4" rows="40" cols="50"
-			defaultValue={"Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading\n\nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**,\n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n* apples\n* oranges\n* pears\n\nNumbered list:\n\n1. apples\n2. oranges\n3. pears\n\nThe rain---not the reign---in\nSpain.\n\n*[Corey Dunn](http://smileawhile.github.io)*"}
-			onChange={this.changePrev.bind(this)} />
-			</div>
-			<div className="content col-xs-4" dangerouslySetInnerHTML={{__html: this.state.text}}></div>
+			<div class="container-fluid">
+				<link rel="stylesheet" href="markdown/css/style.css" />
+				<a href="#/" ><button class="btn btn-primary">HOME</button></a>
+				<div>
+					<textArea id="textInput" className="col-xs-4" rows="40" cols="50"
+					defaultValue={"Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading\n\nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**,\n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n* apples\n* oranges\n* pears\n\nNumbered list:\n\n1. apples\n2. oranges\n3. pears\n\nThe rain---not the reign---in\nSpain.\n\n*[Corey Dunn](http://smileawhile.github.io)*"}
+					onChange={this.changePrev.bind(this)} />
+				</div>
+				<div className="content col-xs-4" dangerouslySetInnerHTML={{__html: this.state.text}}></div>
 			</div>
 		);
 	}

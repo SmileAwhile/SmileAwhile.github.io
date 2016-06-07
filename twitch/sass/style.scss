@@ -1,0 +1,84 @@
+#preview {
+    background: #8282B2;
+
+  .windowHead {
+      background: darkslategray;
+      padding: 20px  0 0 0;
+      margin: 0;
+
+  }
+  .windowHead h1 {
+      color: aliceblue;
+      font-size: 50px;
+      font-weight: bolder;
+      padding: 0px 0px 30px 50px;
+      margin: 20px 0 0 0;
+
+
+  }
+  .online {
+      background: darkseagreen;
+      border-top: 5px;
+      border-color: lightslategray;
+      padding: 20px;
+      margin: 2px 0 0 0;
+  }
+  .online.user {
+      color: steelblue;
+  }
+  .offline {
+      background: steelblue;
+      border-top: 5px;
+      border-color: lightslategray;
+      padding: 20px;
+      margin: 2px 0 0 0;
+  }
+  .offline.user {
+      color: darkseagreen;
+  }
+  .offline .status {
+      color: darkslateblue;
+  }
+  .online .status {
+      color: darkslategray;
+  }
+  .windowContents .status{
+      margin: -18px 0 0 0;
+  }
+  .logo {
+      width: 60px;
+      border-radius: 50%;
+  }
+  .name {
+      margin: 15px 0 0 30px;
+  }
+  .status {
+      padding: 25px 0 0 0;
+      text-align: center;
+
+  }
+  .windowHead p {
+      text-align: right;
+      color: antiquewhite;
+
+
+  }
+  .windowFrame {
+      margin: 0 0 0 5px;
+  }
+  .rightFrame {
+      margin: 20px -10px 0 70px;
+
+  }
+  .rightTitle {
+      color: darkslateblue;
+  }
+  .wrapper {
+      text-align: right;
+  }
+  .home {
+      margin: 0 10px 0 0;
+
+  }
+
+}

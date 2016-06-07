@@ -1,0 +1,39 @@
+#preview {
+  background: dimgray; }
+  #preview #wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 5%;
+    margin-bottom: auto;
+    height: 600px;
+    background: dimgray; }
+  #preview .window {
+    background: gainsboro;
+    font-family: monospace; }
+  #preview .window h4 {
+    text-align: center;
+    color: black; }
+  #preview .output {
+    background-color: silver;
+    margin: 0 15px 0 22px;
+    color: black;
+    text-align: right;
+    padding: 1px;
+    border-width: thin;
+    border-color: darkgray; }
+  #preview .btn {
+    background-color: white;
+    margin: 5px;
+    border-color: darkgray;
+    width: 75px;
+    height: 75px; }
+  #preview .buttons {
+    text-align: center;
+    padding: 10px 0 0 30px; }
+  #preview .home {
+    margin: 20px 0 0 0; }
+  #preview .well {
+    border: 1px solid darkgrey; }
+
+/*# sourceMappingURL=style.css.map */
