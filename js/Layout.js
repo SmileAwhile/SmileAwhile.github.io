@@ -76,7 +76,7 @@ export default class Layout extends React.Component {
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other Projects<span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="weatherApp.html">Local Weather App</a></li>
+                        <li><a href="https://smileawhile.github.io/weatherApp.html">Local Weather App</a></li>
                         <li><a href="pom.html">Pomodoro Clock</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="tribute.html">Tribute Page</a></li>
