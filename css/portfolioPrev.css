@@ -1,4 +1,8 @@
 #preview {
-  background: #44A; }
+  background: #56C; }
+  #preview h1 {
+    color: #FFF; }
+  #preview .previewpic {
+    padding: 15px; }
 
 /*# sourceMappingURL=portfolioPrev.css.map */

@@ -1,99 +1,94 @@
 body {
-  background: midnightblue;
-}
-.margin {
-  background-color: slategrey;
-  margin: -20px 0;
-  padding: 20px 0;
-}
-.top {
-  background: lavender;
-  font-family: "cambria";
+  background: midnightblue; }
 
-}
+.margin {
+  background-color: #FAFAFA;
+  margin: -20px 0;
+  padding: 20px 0; }
+
+.top {
+  background: #DFE2EF;
+  color: #414166;
+  font-family: "cambria"; }
+
 .smallerImg {
   border-radius: 50%;
-  width: 200px;
-}
+  width: 200px; }
 
 .navbar-dark .navbar-toggle .icon-bar {
   background-color: lavender;
-  color: lavender;
-}
-.navbar-dark .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
-  color:#C80;
-}
+  color: lavender; }
+
+.navbar-dark .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
+  color: #C80; }
+
 #Portfolio {
   text-align: center;
   color: lavender;
   font-family: copperplate;
   font-weight: bolder;
-  font-size: 50px;
-}
+  font-size: 50px; }
+
 #ContactMe {
-  text-align: center;
-}
+  text-align: center; }
+
 .mid {
-  background: #44A;
-}
-.previewpic {
-    border-radius: 5%;
-    padding: 5px;
-}
+  background: #44A; }
+
 .well {
-  border: 3px solid midnightblue;
-}
+  border: 3px solid midnightblue; }
+
 .bot {
-  background: lavender;
-  color: midnightblue;
-  font-family:  lucida sans typewriter;
-}
+  background: #DFE2EF;
+  color: #414166;
+  font-family: lucida sans typewriter; }
+
 ::-webkit-input-placeholder {
-    color: cadetblue;
-}
+  color: cadetblue; }
+
 input {
-    background-color: lavender;
-}
+  background-color: #DFE2EF; }
+
 textarea {
-    background-color: lavender;
-    resize: none;
-}
+  background-color: #DFE2EF;
+  resize: none; }
+
 .input {
-    border: none;
-    border-bottom: 2px solid midnightblue;
-    height: 50%;
-    width: 75%;
-    font-size: 250%;
-    margin: 5px;
-    background-color: lavender;
-}
+  border: none;
+  border-bottom: 2px solid #414166;
+  height: 50%;
+  width: 75%;
+  font-size: 250%;
+  margin: 5px;
+  background-color: #DFE2EF; }
 
 .message {
-    border: none;
-    border-bottom: 2px solid midnightblue;
-    height: 50%;
-    width: 75%;
-    margin: 0 10% 0 0;
-    font-size: 250%;
-    padding: 0 5px 250px;
-}
+  border: none;
+  border-bottom: 2px solid #414166;
+  height: 50%;
+  width: 75%;
+  margin: 0 10% 0 0;
+  font-size: 250%;
+  padding: 0 5px 250px; }
+
 .foot {
+  text-align: center; }
+
+.foot {
+  background-color: darkslateblue;
   text-align: center;
-}
-.foot {
-    background-color: darkslateblue;
-    text-align: center;
-    color: lightcoral;
-}
-.foot a{
-    color: lavender;
-}
+  color: lightcoral; }
+
+.foot a {
+  color: lavender; }
+
 .signed {
   text-align: center;
   background: midnightblue;
-  color: #C80;
-}
+  color: #C80; }
+
 footer {
-  height:auto;
-  margin: -20px 0;
-}
+  height: auto;
+  margin: -20px 0; }
+
+/*# sourceMappingURL=portfolio2.css.map */

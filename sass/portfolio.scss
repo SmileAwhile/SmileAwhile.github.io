@@ -1,21 +1,25 @@
+$dark: #414166;
+$light: #DFE2EF;
+
 body {
   background: midnightblue;
 }
 .margin {
-  background-color: slategrey;
+  background-color: #FAFAFA;
   margin: -20px 0;
   padding: 20px 0;
 }
 .top {
-  background: lavender;
+  background: $light;
+  color: $dark;
   font-family: "cambria";
 
 }
 .smallerImg {
   border-radius: 50%;
   width: 200px;
-}
 
+}
 .navbar-dark .navbar-toggle .icon-bar {
   background-color: lavender;
   color: lavender;
@@ -37,42 +41,39 @@ body {
   background: #44A;
 }
 .previewpic {
-  
-    padding: 25px;
-    margin: 10px;
 
 }
 .well {
   border: 3px solid midnightblue;
 }
 .bot {
-  background: lavender;
-  color: midnightblue;
+  background: $light;
+  color: $dark;
   font-family:  lucida sans typewriter;
 }
 ::-webkit-input-placeholder {
     color: cadetblue;
 }
 input {
-    background-color: lavender;
+    background-color: $light;
 }
 textarea {
-    background-color: lavender;
+    background-color: $light;
     resize: none;
 }
 .input {
     border: none;
-    border-bottom: 2px solid midnightblue;
+    border-bottom: 2px solid $dark;
     height: 50%;
     width: 75%;
     font-size: 250%;
     margin: 5px;
-    background-color: lavender;
+    background-color: $light;
 }
 
 .message {
     border: none;
-    border-bottom: 2px solid midnightblue;
+    border-bottom: 2px solid $dark;
     height: 50%;
     width: 75%;
     margin: 0 10% 0 0;
