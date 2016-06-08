@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,IAAK;EACJ,UAAU,EAHN,OAAO;;AAKX,GAAI;EACH,UAAU,EANP,OAAO;EAOV,WAAW,EARR,OAAO;;AAUX,IAAK;EACJ,UAAU,EAVP,OAAO;EAWV,WAAW,EAZR,OAAO;;AAcX,KAAM;EACL,KAAK,EAAE,KAAK",
+"sources": ["../sass/native.scss"],
+"names": [],
+"file": "native.css"
+}
