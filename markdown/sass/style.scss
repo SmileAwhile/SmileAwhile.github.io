@@ -15,4 +15,10 @@ $bg: #f2f2f2;
 	.sign {
 		float: right;
 	}
+	.signed {
+		display: inline;
+		float: right;
+		background: $bg;
+		color: black;
+	}
 }

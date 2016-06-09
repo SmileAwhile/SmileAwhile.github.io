@@ -8,5 +8,10 @@
     font-family: "arial"; }
   #preview .sign {
     float: right; }
+  #preview .signed {
+    display: inline;
+    float: right;
+    background: #f2f2f2;
+    color: black; }
 
 /*# sourceMappingURL=style.css.map */
