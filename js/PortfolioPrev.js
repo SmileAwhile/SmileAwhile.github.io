@@ -24,6 +24,9 @@ export default class PortfolioPrev extends React.Component {
         <div class=" row"><a href="#/twitch"><img class="col-xs-6 previewpic" src="twitchy.png"/></a>
             <a href="#/calc"><img class="col-xs-6 previewpic" src="calc.png"/></a>
         </div>
+        <div class=" row"><a href="#/recipe"><img class="col-xs-6 previewpic" src="images/recipe.png"/></a>
+
+        </div>
         <div class=" row">
 
         </div>

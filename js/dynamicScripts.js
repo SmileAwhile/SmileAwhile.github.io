@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import MarkdownPrev from "../markdown/js/MarkdownPrev.js";
 import PortfolioPrev from "./PortfolioPrev";
 import QuoteScript from "../quote/js/QuoteScript";
+import RecipeBook from "../recipe/js/RecipeBook";
 import TopCampers from "../campers/js/module1";
 import TwitchScript from "../twitch/js/TwitchScripts";
 import WikiScript from "../wiki/js/wikiScripts";
@@ -25,6 +26,7 @@ ReactDOM.render ((
       <Route path="/wiki" component={WikiScript} />
       <Route path="/calc" component={CalcScript} />
       <Route path="/twitch" component={TwitchScript} />
+      <Route path="/recipe" component={RecipeBook} />
     </Route>
   </Router>),
 base);

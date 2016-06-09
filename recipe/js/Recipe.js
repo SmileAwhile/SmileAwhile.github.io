@@ -64,8 +64,10 @@ export default class Recipe extends React.Component {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.save.bind(this)} bsStyle="primary" bsSize="large">Save Recipe</Button>
-            <Button onClick={this.close.bind(this)} bsSize="large">Close</Button>
+            <ButtonToolbar>
+              <Button onClick={this.save.bind(this)} bsStyle="primary" bsSize="large">Save Recipe</Button>
+              <Button onClick={this.close.bind(this)} bsSize="large">Close</Button>
+            </ButtonToolbar>
           </Modal.Footer>
         </Modal>
 

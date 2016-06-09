@@ -1,22 +1,18 @@
-body {
+#preview {
   font-family: 'Cambria';
   background: #a2a2c2; }
-
-.ingredientHead {
-  text-align: center;
-  padding-bottom: 10px; }
-
-.recipeBookHead {
-  text-align: center;
-  color: skyblue;
-  border-bottom: 2px solid skyblue;
-  padding-bottom: 10px; }
-
-.well {
-  background: #414166;
-  margin-top: 50px; }
-
-Button {
-  padding: 10px; }
+  #preview .ingredientHead {
+    text-align: center;
+    padding-bottom: 10px; }
+  #preview .recipeBookHead {
+    text-align: center;
+    color: skyblue;
+    border-bottom: 2px solid skyblue;
+    padding-bottom: 10px; }
+  #preview .well {
+    background: #414166;
+    margin-top: 50px; }
+  #preview Button {
+    padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */

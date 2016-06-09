@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel, Accordion, Modal, Button, form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Panel, Accordion, Modal, Button, ButtonToolbar, form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 import Recipe from './Recipe';
 
@@ -77,12 +77,15 @@ export default class RecipeBook extends React.Component {
   render() {
     return (
       <div>
+        <link rel="stylesheet" href="recipe/css/style.css" />
         <h2 class="recipeBookHead">Recipe Book</h2>
         <Accordion>
             {data}
         </Accordion>
-        <Button bsStyle="primary" bsSize="large" onClick={this.open.bind(this)}>Add Recipe</Button>
-
+        <ButtonToolbar>
+          <Button bsStyle="primary" bsSize="large" onClick={this.open.bind(this)}>Add Recipe</Button>
+          <a href="#/"><Button bsStyle="success" bsSize="large" >HOME</Button></a>
+        </ButtonToolbar>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Add a Recipe</Modal.Title>
@@ -102,8 +105,10 @@ export default class RecipeBook extends React.Component {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.save.bind(this)} bsStyle="primary" bsSize="large">Save Recipe</Button>
-            <Button onClick={this.close.bind(this)} bsSize="large">Close</Button>
+            <ButtonToolbar>
+              <Button onClick={this.save.bind(this)} bsStyle="primary" bsSize="large">Save Recipe</Button>
+              <Button onClick={this.close.bind(this)} bsSize="large">Close</Button>
+            </ButtonToolbar>
           </Modal.Footer>
         </Modal>
 
