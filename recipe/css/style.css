@@ -14,5 +14,9 @@
     margin-top: 50px; }
   #preview Button {
     padding: 10px; }
+  #preview #built {
+    display: inline;
+    float: right;
+    color: skyblue; }
 
 /*# sourceMappingURL=style.css.map */

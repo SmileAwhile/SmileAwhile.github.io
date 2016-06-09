@@ -84,8 +84,10 @@ export default class RecipeBook extends React.Component {
         </Accordion>
         <ButtonToolbar>
           <Button bsStyle="primary" bsSize="large" onClick={this.open.bind(this)}>Add Recipe</Button>
-          <a href="#/"><Button bsStyle="success" bsSize="large" >HOME</Button></a>
+          <a href="#/"><Button bsStyle="success" bsSize="large">HOME</Button></a>
         </ButtonToolbar>
+        <span id="built">Built with React and Sass by Corey Dunn in 2016</span>
+
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Add a Recipe</Modal.Title>
