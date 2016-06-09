@@ -70,6 +70,7 @@ export default class Layout extends React.Component {
                     <ul class="dropdown-menu">
                       <li><a href="https://smileawhile.github.io/markdown/">Markdown Previewer</a></li>
                       <li><a href="https://smileawhile.github.io/campers/">Top Free Code Campers</a></li>
+                      <li><a href="http://smileawhile.github.io/recipe/">Recipe Book</a></li>
                     </ul>
                     </li>
                     <li class="dropdown">
