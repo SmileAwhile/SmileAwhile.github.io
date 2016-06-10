@@ -74,6 +74,12 @@ export default class Layout extends React.Component {
                     </ul>
                     </li>
                     <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">D3js Projects<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="http://smileawhile.github.io/d3js/">Gross Domestic Product Bar Chart</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other Projects<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="https://smileawhile.github.io/weatherApp.html">Local Weather App</a></li>
