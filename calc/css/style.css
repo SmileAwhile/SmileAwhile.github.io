@@ -1,5 +1,5 @@
 #preview {
-  background: dimgray; }
+  background: #313f80; }
   #preview #wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -7,25 +7,27 @@
     margin-top: 5%;
     margin-bottom: auto;
     height: 600px;
-    background: dimgray; }
+    background: #313f80; }
   #preview .window {
-    background: gainsboro;
+    background: #20d6d1;
+    opacity: .6;
     font-family: monospace; }
   #preview .window h4 {
     text-align: center;
     color: black; }
   #preview .output {
-    background-color: silver;
+    background: #bdf7f6;
     margin: 0 15px 0 22px;
     color: black;
     text-align: right;
     padding: 1px;
     border-width: thin;
-    border-color: darkgray; }
+    border-color: midnightblue; }
   #preview .btn {
-    background-color: white;
+    background: white;
+    opacity: 1;
     margin: 5px;
-    border-color: darkgray;
+    border-color: midnightblue;
     width: 75px;
     height: 75px; }
   #preview .buttons {
@@ -34,6 +36,6 @@
   #preview .home {
     margin: 20px 0 0 0; }
   #preview .well {
-    border: 1px solid darkgrey; }
+    border: 1px solid midnightblue; }
 
 /*# sourceMappingURL=style.css.map */

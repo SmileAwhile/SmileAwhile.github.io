@@ -1,5 +1,5 @@
 #preview {
-    background: dimgray;
+    background: #313f80;
 
   #wrapper {
       margin-left: auto;
@@ -8,13 +8,14 @@
       margin-top: 5%;
       margin-bottom: auto;
       height: 600px;
-      background: dimgray;
+      background: #313f80;
   }
   .outer {
 
   }
   .window {
-      background: gainsboro;
+      background: #20d6d1;
+      opacity: .6;
       font-family: monospace;
 
 
@@ -25,18 +26,19 @@
 
   }
   .output {
-      background-color: silver;
+      background: #bdf7f6;
       margin: 0 15px 0 22px;
       color: black;
       text-align: right;
       padding: 1px;
       border-width: thin;
-      border-color: darkgray;
+      border-color: midnightblue;
   }
   .btn {
-      background-color: white;
+      background: white;
+      opacity: 1;
       margin: 5px;
-      border-color: darkgray;
+      border-color: midnightblue;
       width: 75px;
       height: 75px;
   }
@@ -48,7 +50,7 @@
       margin: 20px 0 0 0;
   }
   .well {
-    border: 1px solid darkgrey;
+    border: 1px solid midnightblue;
   }
 
 }
