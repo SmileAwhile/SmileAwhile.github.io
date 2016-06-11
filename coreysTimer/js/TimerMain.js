@@ -42,14 +42,10 @@ $(document).ready(function() {
           isPaused = !isPaused;
         });
 
-        function updateWork() {
-            $("#workLength").html(Math.floor(Math.floor(timer) / 60));  // update display with current minute value of timer
+        function zeroPad(num, places) {
+          var zero = places - num.toString().length + 1;
+          return Array(+(zero > 0 && zero)).join("0") + num;
         }
-
-        function updateRegen() {
-            $("#regenLength").html(Math.floor(Math.floor(regen) / 60));  // update display with current minute value of regen
-        }
-
 
         function init()
         {
@@ -81,12 +77,10 @@ $(document).ready(function() {
             if (state) {
                 $(".status").html("<h1>Working...</h1>");
                 timeLeft = Math.floor(degrees / convert);  // total seconds
-                minutes = timeLeft / 60;  // minutes
-                if (timeLeft - Math.floor(minutes) * 60 < 10) {  // if less than 10 seconds left in the current minute
-                    text = Math.floor(minutes) + ":0" + (timeLeft - Math.floor(minutes) * 60);    // update display with min and sec adding in 0 before single digit second
-                } else {
-                text = Math.floor(minutes) + ":" + (timeLeft - Math.floor(minutes) * 60);   // update display with minutes and seconds
-                }
+                var minutesLeft = Math.floor(timeLeft / 60);  // minutes
+                var hoursLeft = Math.floor(minutesLeft / 60);
+                text = (Math.floor(hoursLeft)) + ":" + zeroPad((Math.floor(minutesLeft) - Math.floor(hoursLeft) * 60), 2) + ":" + zeroPad((timeLeft - Math.floor(minutesLeft) * 60), 2);    // update display with min and sec adding in 0 before single digit second
+                console.log((hoursLeft));
             }
             else {
                 start();
@@ -134,6 +128,7 @@ $(document).ready(function() {
                 if (degrees > 359) {  // if degrees greater than 359 (full)
                     workSound.play();
                     state = true;  // switch to work
+                    isPaused = true;
                 }
             }
 
@@ -200,10 +195,13 @@ export default class TimerMain extends React.Component {
     window.update = function() {
       window.storedTimers = window.timers.map(function(v, i) {
         console.log(v.hours);
-        var value = (v.hours * 60 * 60) + (v.minutes * 60) + v.seconds;
+        console.log(v.minutes);
+        console.log(v.seconds);
+
+        var value = ((parseInt(v.hours, 10) * 60) * 60) + parseInt((v.minutes * 60), 10) + parseInt(v.seconds, 10);
         console.log(value);
         return (
-          <option value={value} key={i} >{zeroPad(v.hours, 2)}:{zeroPad(v.minutes, 2)}:{zeroPad(v.seconds, 2)}</option>
+          <option value={parseInt(value)} key={i} >{zeroPad(v.hours, 2)}:{zeroPad(v.minutes, 2)}:{zeroPad(v.seconds, 2)}</option>
         )
       });
   }
@@ -239,8 +237,9 @@ export default class TimerMain extends React.Component {
     var hoursSav = document.getElementById('Hours').value;
     var minutesSav = document.getElementById('Minutes').value;
     var secondsSav = document.getElementById('Seconds').value;
+    console.log(hoursSav);
 
-    window.timers.push({hours: hoursSav, minutes: minutesSav, seconds: secondsSav});
+    window.timers.push({hours: parseInt(hoursSav), minutes: parseInt(minutesSav), seconds: parseInt(secondsSav)});
     localStorage.setItem("timers", JSON.stringify(window.timers));
     this.setState({ showModal: false });
     update();
