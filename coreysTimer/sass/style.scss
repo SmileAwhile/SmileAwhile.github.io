@@ -1,0 +1,76 @@
+body {
+    background: #333;
+     font-family: "Brush Script MT", cursive;
+}
+/*Centering the gauge*/
+#canvas {
+    display: block;
+    width: 300px;
+    margin: 100px auto;
+    cursor: pointer
+}
+/*Custom font for numbers*/
+@font-face {
+    font-family: "bebas";
+    src: url("http://thecodeplayer.com/uploads/fonts/BebasNeue.otf" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous" );
+}
+.status {
+    color: lightgreen;
+    text-align: center;
+}
+.btn {
+    width: 150px;
+    height: 75px;
+    background-color: #333;
+    outline: none;
+    border: none;
+}
+.btn:hover {
+    color: ghostwhite;
+}
+.btn:focus {
+    border-color: #333;
+    color: ghostwhite;
+    border: none;
+    outline: none;
+}
+.regen {
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
+}
+.work {
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
+}
+.frame {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+.res {
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+}
+.home {
+    color: skyblue;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+}
+.header {
+    text-align: center;
+    margin: 0 0 -15px 0;
+}
