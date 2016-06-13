@@ -12,10 +12,7 @@ export default class PortfolioPrev extends React.Component {
           <h1 class="col-xs-12" id="Portfolio">
           PORTFOLIO</h1>
         </div>
-        <div class=" row"><a href=
-        "#/markdown"><img class=
-        "col-xs-6 previewpic" src=
-        "mark.png"/></a>
+        <div class=" row"><a href="#/markdown"><img class="col-xs-6 previewpic" src="mark.png"/></a>
         <a href="#/quote"><img class="col-xs-6 previewpic" src="quotey.png"/></a>
         </div>
        <div class=" row"><a href="#/campers"><img class="col-xs-6 previewpic" src="camp.png"/></a>
@@ -25,7 +22,7 @@ export default class PortfolioPrev extends React.Component {
             <a href="#/calc"><img class="col-xs-6 previewpic" src="calc.png"/></a>
         </div>
         <div class=" row"><a href="#/recipe"><img class="col-xs-6 previewpic" src="images/recipe.png"/></a>
-
+          <a href="http://smileawhile.github.io/d3js/"><img class="col-xs-6 previewpic" src="images/grossDomestic.png"/></a>
         </div>
         <div class=" row">
 
