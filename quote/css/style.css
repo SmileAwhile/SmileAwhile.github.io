@@ -1,5 +1,6 @@
 #preview {
-  background: cadetblue; }
+  background: cadetblue;
+  padding: 50px; }
   #preview .jokeCNT {
     background-color: aliceblue; }
   #preview .buttons {

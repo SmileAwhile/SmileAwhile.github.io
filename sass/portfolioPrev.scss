@@ -1,13 +1,30 @@
 #preview {
-  background: #56C;
+  background: white;
 
-  h1 {
+  #Portfolio {
     color: #FFF;
+    background: #414166;
+    margin: 0px -5px 0;
 }
   .previewpic {
 
     padding: 15px;
 
+  }
+  .thumb {
+    margin-top: 20px;
+    width: 400px;
+  }
+  h3 {
+    padding: 20px;
+  }
+  h1 {
+    padding: 20px;
+    font-weight: bold;
+    color: #414166;
+  }
+  .row {
+    margin: 20px 0 50px;
   }
 
 }

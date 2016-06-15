@@ -1,8 +1,21 @@
 #preview {
-  background: #56C; }
-  #preview h1 {
-    color: #FFF; }
+  background: white; }
+  #preview #Portfolio {
+    color: #FFF;
+    background: #414166;
+    margin: 0px -5px 0; }
   #preview .previewpic {
     padding: 15px; }
+  #preview .thumb {
+    margin-top: 20px;
+    width: 400px; }
+  #preview h3 {
+    padding: 20px; }
+  #preview h1 {
+    padding: 20px;
+    font-weight: bold;
+    color: #414166; }
+  #preview .row {
+    margin: 20px 0 50px; }
 
 /*# sourceMappingURL=portfolioPrev.css.map */

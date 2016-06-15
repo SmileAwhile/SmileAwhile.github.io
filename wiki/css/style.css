@@ -1,5 +1,6 @@
 #preview {
-  background: burlywood; }
+  background: burlywood;
+  padding: 50px 0; }
   #preview .top {
     padding: 20px;
     background: burlywood; }

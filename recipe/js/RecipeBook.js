@@ -76,7 +76,7 @@ export default class RecipeBook extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="container">
         <link rel="stylesheet" href="recipe/css/style.css" />
         <h2 class="recipeBookHead">Recipe Book</h2>
         <Accordion>

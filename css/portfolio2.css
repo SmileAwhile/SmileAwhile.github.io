@@ -1,26 +1,22 @@
-body {
-  background: midnightblue; }
-
 .margin {
   background-color: #FAFAFA;
   margin: -20px 0;
   padding: 20px 0; }
 
 .top {
-  background: #DFE2EF;
-  color: #414166;
+  margin-top: -20px;
+  background-image: url("../images/apple-iphone-desk-office.jpg");
+  background-size: 2000px 1000px;
+  background-repeat: no-repeat;
+  color: white;
   font-family: "cambria"; }
+  .top a {
+    color: #bbfdff; }
 
 .smallerImg {
+  margin-top: 30px;
   border-radius: 50%;
   width: 200px; }
-
-.navbar-dark .navbar-toggle .icon-bar {
-  background-color: lavender;
-  color: lavender; }
-
-.navbar-dark .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
-  color: #C80; }
 
 #Portfolio {
   text-align: center;
@@ -30,7 +26,9 @@ body {
   font-size: 50px; }
 
 #ContactMe {
-  text-align: center; }
+  text-align: center;
+  background: #f6850f;
+  padding: 30px; }
 
 .mid {
   background: #44A; }
@@ -39,18 +37,19 @@ body {
   border: 3px solid midnightblue; }
 
 .bot {
-  background: #DFE2EF;
+  background: white;
   color: #414166;
-  font-family: lucida sans typewriter; }
+  font-family: lucida sans typewriter;
+  padding-bottom: 20px; }
 
 ::-webkit-input-placeholder {
   color: cadetblue; }
 
 input {
-  background-color: #DFE2EF; }
+  background-color: white; }
 
 textarea {
-  background-color: #DFE2EF;
+  background-color: white;
   resize: none; }
 
 .input {
@@ -60,7 +59,7 @@ textarea {
   width: 75%;
   font-size: 250%;
   margin: 5px;
-  background-color: #DFE2EF; }
+  background-color: white; }
 
 .message {
   border: none;
@@ -75,17 +74,17 @@ textarea {
   text-align: center; }
 
 .foot {
-  background-color: darkslateblue;
+  background-color: #888887;
   text-align: center;
-  color: lightcoral; }
+  color: #0c1020; }
 
 .foot a {
-  color: lavender; }
+  color: #24498f; }
 
 .signed {
   text-align: center;
-  background: midnightblue;
-  color: #C80; }
+  background: #202020;
+  color: #888888; }
 
 footer {
   height: auto;
