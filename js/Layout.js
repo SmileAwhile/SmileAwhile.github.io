@@ -81,17 +81,19 @@ export default class Layout extends React.Component {
 
         <div >
           <div class="top">
-            <div class="row">
-            <div class="col-xs-2"></div>
-              <h1 class="col-xs-8" id="AboutMe">My name is Corey Dunn and I'm one
-              semester away from my A.S. in Computer Science.<br/><br/> I'd really love
-              to do just about anything involving programming for a
-                  career. <br/><br/>I'm very interested in Web Developement and I've been doing
-                  a lot of research and learning in my free time to get better at it.
-                  <br/><br/><a href="http://smileawhile.github.io/resume">Link to my Resume</a></h1>
-                  <img class="col-xs-2 smallerImg" src=
-              "https://avatars1.githubusercontent.com/u/19420817?v=3&s=460"/>
-            </div>
+            <div class="container-fluid">
+              <div class="row">
+              <div class="col-xs-2"></div>
+                <h1 class="col-xs-8" id="AboutMe">My name is Corey Dunn and I'm one
+                semester away from my A.S. in Computer Science.<br/><br/> I'd really love
+                to do just about anything involving programming for a
+                    career. <br/><br/>I'm very interested in Web Developement and I've been doing
+                    a lot of research and learning in my free time to get better at it.
+                    <br/><br/><a href="http://smileawhile.github.io/resume">Link to my Resume</a></h1>
+                    <img class="col-xs-2 smallerImg" src=
+                "https://avatars1.githubusercontent.com/u/19420817?v=3&s=460"/>
+              </div>
+              </div>
           </div>
 
           <div id="preview" >
@@ -99,9 +101,9 @@ export default class Layout extends React.Component {
           </div>
 
           <div class="bot">
-          <div class="row">
+
              <h1 class="centered" id="ContactMe">CONTACT ME</h1>
-          </div>
+
           <div class="container">
             <div class="row">
                 <div class="col-xs-6">

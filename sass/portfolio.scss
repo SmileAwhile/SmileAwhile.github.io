@@ -10,7 +10,7 @@ $light: white;
 .top {
   margin-top: -20px;
   background-image: url("../images/apple-iphone-desk-office.jpg");
-  background-size: 2000px 1000px;
+  background-size: 100% 1000px;
   background-repeat: no-repeat;
   color: white;
   font-family: "cambria";
@@ -70,11 +70,11 @@ $light: white;
 #ContactMe {
   text-align: center;
   background: #f6850f;
-  padding: 20px;
+  padding: 20px 0;
   font-family: copperplate;
   font-weight: bolder;
   font-size: 50px;
-  margin-top: -1px;
+  margin-top: -1px ;
 }
 .mid {
   background: #44A;
