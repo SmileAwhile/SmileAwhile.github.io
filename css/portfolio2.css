@@ -1,3 +1,6 @@
+body {
+  background: #202020; }
+
 .margin {
   background-color: #FAFAFA;
   margin: -20px 0;
@@ -111,7 +114,8 @@ textarea {
 .foot {
   background-color: #888887;
   text-align: center;
-  color: #0c1020; }
+  color: #0c1020;
+  margin-top: -20px; }
 
 .foot a {
   color: #24498f; }
@@ -123,6 +127,7 @@ textarea {
 
 footer {
   height: auto;
-  margin: -20px 0; }
+  margin-top: -20px 0;
+  margin-bottom: -50px; }
 
 /*# sourceMappingURL=portfolio2.css.map */
