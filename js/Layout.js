@@ -53,7 +53,7 @@ export default class Layout extends React.Component {
                     <NavDropdown eventKey={4} title="React Projects" id="react-nav-dropdown">
                       <MenuItem eventKey={4.1} href="http://smileawhile.github.io/recipe/">Recipe Book</MenuItem>
                       <MenuItem eventKey={4.2} href="https://smileawhile.github.io/campers/">Top Free Code Camper</MenuItem>
-                      <MenuItem eventKey={4.3} href="http://smileawhile.github.io/recipe/">Recipe Book</MenuItem>
+                      <MenuItem eventKey={4.3} href="http://smileawhile.github.io/markdown/">Markdown Previewer</MenuItem>
                     </NavDropdown>
                     <NavDropdown eventKey={5} title="D3js Projects" id="d3-nav-dropdown">
                       <MenuItem eventKey={5.1} href="http://smileawhile.github.io/d3js/">Gross Domestic Product Bar Chart</MenuItem>
