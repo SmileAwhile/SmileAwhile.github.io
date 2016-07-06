@@ -1,0 +1,64 @@
+$lines: #24d6fe;
+
+body {
+  font-family: fantasy;
+  background: #f0ecce;
+}
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+.topLeft {
+  border-bottom: thick solid $lines;
+  border-right: thick solid $lines;
+}
+.topCent {
+  border-bottom: thick solid $lines;
+  border-right: thick solid $lines;
+  border-left: thick solid $lines;
+}
+.topRight {
+  border-bottom: thick solid $lines;
+  border-left: thick solid $lines;
+}
+.midLeft {
+  border-bottom: thick solid $lines;
+  border-right: thick solid $lines;
+  border-top: thick solid $lines;
+}
+.midCent {
+  border-bottom: thick solid $lines;
+  border-right: thick solid $lines;
+  border-left: thick solid $lines;
+  border-top: thick solid $lines;
+}
+.midRight {
+  border-bottom: thick solid $lines;
+  border-left: thick solid $lines;
+  border-top: thick solid $lines;
+}
+.botLeft {
+  border-right: thick solid $lines;
+  border-top: thick solid $lines;
+}
+.botCent {
+  border-right: thick solid $lines;
+  border-left: thick solid $lines;
+  border-top: thick solid $lines;
+}
+.botRight {
+  border-left: thick solid $lines;
+  border-top: thick solid $lines;
+}
+h1 {
+  cursor: pointer;
+  color: #0eb3a9
+}
+.player {
+  color: #fa261e
+}
+h2 {
+  text-align: center;
+  color: #bf1f1f;
+  font-size: 100px;
+}

@@ -1,0 +1,63 @@
+body {
+  font-family: fantasy;
+  background: #f0ecce; }
+
+.container {
+  text-align: center;
+  margin-top: 100px; }
+
+.topLeft {
+  border-bottom: thick solid #24d6fe;
+  border-right: thick solid #24d6fe; }
+
+.topCent {
+  border-bottom: thick solid #24d6fe;
+  border-right: thick solid #24d6fe;
+  border-left: thick solid #24d6fe; }
+
+.topRight {
+  border-bottom: thick solid #24d6fe;
+  border-left: thick solid #24d6fe; }
+
+.midLeft {
+  border-bottom: thick solid #24d6fe;
+  border-right: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+.midCent {
+  border-bottom: thick solid #24d6fe;
+  border-right: thick solid #24d6fe;
+  border-left: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+.midRight {
+  border-bottom: thick solid #24d6fe;
+  border-left: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+.botLeft {
+  border-right: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+.botCent {
+  border-right: thick solid #24d6fe;
+  border-left: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+.botRight {
+  border-left: thick solid #24d6fe;
+  border-top: thick solid #24d6fe; }
+
+h1 {
+  cursor: pointer;
+  color: #0eb3a9; }
+
+.player {
+  color: #fa261e; }
+
+h2 {
+  text-align: center;
+  color: #bf1f1f;
+  font-size: 100px; }
+
+/*# sourceMappingURL=style.css.map */
