@@ -37,6 +37,13 @@ export default class PortfolioPrev extends React.Component {
               Leaderboard can be sorted by recent history or all time leaders</h3></div>
           </div>
           <div class="row">
+          <div class='col-md-6 col-xs-12'><a href="http://smileawhile.github.io/tictac/"><img class="thumb" src='images/tictacThumb.png'/></a></div>
+          <div class='col-md-6 col-xs-12'><h1>Tic Tac Toe Game</h1>
+            <h3>Play Tic Tac Toe agaisnt a computer opponent.<br/>
+            AI makes decisions based on how the game is going.<br/>
+            App is made with JQuery and Sass</h3></div>
+          </div>
+          <div class="row">
           <div class='col-md-6 col-xs-12'><a href="#/quote"><img class="thumb" src='images/quote.png'/></a></div>
           <div class='col-md-6 col-xs-12'><h1>Random Chuck Norris Joke Generator</h1>
             <h3>App uses Jquery and makes call to JSON URL to grab a random joke.
