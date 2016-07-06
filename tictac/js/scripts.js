@@ -32,84 +32,102 @@ StartGame();
 // if not computer takes turn
 // check if computer won
 $("#0").on("click", function() {
-  $(this).text(teamSign);
-  board[0] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[0] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[0] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
-
 });
 $("#1").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[1] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[1] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[1] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#2").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[2] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[2] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[2] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#3").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[3] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[3] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[3] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#4").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[4] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[4] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[4] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#5").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[5] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[5] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[5] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#6").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[6] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[6] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[6] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#7").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[7] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[7] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[7] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 $("#8").on("click", function() {
-  $(this).addClass("player");
-  $(this).text(teamSign);
-  board[8] = teamSign;
-  if (!CheckWin()) {
-      AITurn();
-      CheckWin();
+  if (board[8] == "?") {
+    $(this).addClass("player");
+    $(this).text(teamSign);
+    board[8] = teamSign;
+    if (!CheckWin()) {
+        AITurn();
+        CheckWin();
+    }
   }
 });
 
