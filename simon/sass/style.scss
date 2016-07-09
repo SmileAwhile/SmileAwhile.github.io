@@ -1,0 +1,301 @@
+$green: #11982e;
+$bg: #e3e494;
+$board: #3e4150;
+$yellow: #c2b11e;
+$blue: #219cd0;
+$red: #a11b1b;
+$greenLit: #14e942;
+$yellowLit: #f4ff0f;
+$blueLit: #06daff;
+$redLit: #ee2121;
+
+body {
+  background-image: url("../../images/wood057.jpg");
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+
+}
+.board {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  margin-top: 15%;
+  margin-bottom: auto;
+  height: 500px;
+  background: $board;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px 5px;
+}
+.greenBtn {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-top-left-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $green;
+  position: relative;
+  z-index: 1;
+  border-bottom: 10px solid $board;
+  border-right: 10px solid $board;
+}
+.redBtn {
+  margin-top: 20px;
+  margin-left: 0px;
+  border-top-right-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $red;
+  position: relative;
+  z-index: 1;
+  border-bottom: 10px solid $board;
+  border-left: 10px solid $board;
+}
+.yellowBtn {
+  margin-top: -150px;
+  margin-left: 20px;
+  border-bottom-left-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $yellow;
+  position: relative;
+  z-index: 1;
+  border-top: 10px solid $board;
+  border-right: 10px solid $board;
+}
+.blueBtn {
+  margin-top: -150px;
+  margin-left: 0px;
+  border-bottom-right-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $blue;
+  position: relative;
+  z-index: 1;
+  border-top: 10px solid $board;
+  border-left: 10px solid $board;
+}
+
+.greenBtnLit {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-top-left-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $greenLit;
+  position: relative;
+  z-index: 1;
+  border-bottom: 10px solid $board;
+  border-right: 10px solid $board;
+}
+.redBtnLit {
+  margin-top: 20px;
+  margin-left: 0px;
+  border-top-right-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $redLit;
+  position: relative;
+  z-index: 1;
+  border-bottom: 10px solid $board;
+  border-left: 10px solid $board;
+}
+.yellowBtnLit {
+  margin-top: -150px;
+  margin-left: 20px;
+  border-bottom-left-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $yellowLit;
+  position: relative;
+  z-index: 1;
+  border-top: 10px solid $board;
+  border-right: 10px solid $board;
+}
+.blueBtnLit {
+  margin-top: -150px;
+  margin-left: 0px;
+  border-bottom-right-radius: 100%;
+  height: 230px;
+  width: 230px;
+  background: $blueLit;
+  position: relative;
+  z-index: 1;
+  border-top: 10px solid $board;
+  border-left: 10px solid $board;
+}
+
+
+.controls {
+  background: #e4e4e4;
+  height: 300px;
+  width: 300px;
+  border-radius: 100%;
+  margin-top: 100px;
+  margin-left: 100px;
+  position: relative;
+  z-index: 2;
+  border-color: $board;
+  border-style: solid;
+  border-width: 10px;
+
+
+  h1 {
+    font-weight: bolder;
+    margin-top: 40px;
+    margin-left: 30px;
+    font-size: 75px;
+    position: absolute;
+  }
+
+  p {
+    font-weight: bolder;
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 35px;
+  }
+}
+.display {
+  height: 50px;
+  width: 75px;
+  background: #450000;
+  color: #ff1212;
+  border-radius: 25%;
+  margin-top: 130px;
+  margin-left: 20px;
+  text-align: center;
+
+
+  h3 {
+    margin-top: 15px;
+    margin-left: 20px;
+    font-family: 'Orbitron', sans-serif;
+    position: absolute;
+  }
+}
+
+#START{position:relative;}
+#START:before{
+    position:absolute;
+    content:'';
+    top:-10px;
+    right:-10px;
+    left:-10px;
+    bottom:-10px;
+}
+#STRICT{position:relative;}
+#STRICT:before{
+    position:absolute;
+    content:'';
+    top:-10px;
+    right:-10px;
+    left:-10px;
+    bottom:-10px;
+}
+
+.startBtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 5px;
+  background: #ff0000;
+  margin-top: -50px;
+  margin-left: 120px;
+  box-shadow: 2px 2px 2px 2px;
+}
+.startBtnPushed {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 5px;
+  background: #ff0000;
+  margin-top: -50px;
+  margin-left: 120px;
+}
+.strictBtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 5px;
+  background: #fffc00;
+  margin-top: -50px;
+  margin-left: 200px;
+  box-shadow: 2px 2px 2px 2px;
+}
+.strictBtnPushed {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 5px;
+  background: #fffc00;
+  margin-top: -50px;
+  margin-left: 200px;
+}
+
+.strictLight {
+  background: #b30606;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 4px;
+  margin-top: -68px;
+  margin-left: 218px;
+}
+.strictLightOn {
+  background: #ff0000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border-color: $board;
+  border-style: solid;
+  border-width: 3px;
+  margin-top: -68px;
+  margin-left: 218px;
+  box-shadow: 1px 1px 1px 1px #b50707;
+}
+
+
+.offLBL {
+  margin-top: 15px;
+  margin-left: 80px;
+  font-weight: bolder;
+
+}
+.onLBL {
+  margin-top: -23px;
+  margin-left: 175px;
+  font-weight: bolder;
+}
+.offToggled {
+  margin-top: -33px;
+  margin-left: 110px;
+  height: 30px;
+  width: 30px;
+  background: $board;
+}
+.onToggled {
+  margin-top: -30px;
+  margin-left: 140px;
+  height: 30px;
+  width: 30px;
+  background: $board;
+}
+.toggled {
+  background: #0990ff;
+  border-color: $board;
+  border-style: solid;
+  border-width: 4px;
+}

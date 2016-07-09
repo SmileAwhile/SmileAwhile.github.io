@@ -37,6 +37,14 @@ export default class PortfolioPrev extends React.Component {
               Leaderboard can be sorted by recent history or all time leaders</h3></div>
           </div>
           <div class="row">
+          <div class='col-md-6 col-xs-12'><a href="http://smileawhile.github.io/simon/"><img class="thumb" src='images/simonThumb.png'/></a></div>
+          <div class='col-md-6 col-xs-12'><h1>Simon Game</h1>
+            <h3>Play the old electronic game Simon<br/>
+            Game generates a random pattern of colors that builds on itself.<br/>
+            Allows for strict mode, so that if you mess up once, you have to start all over<br/>
+            Win the game by correctly answering the color pattern of 20 </h3></div>
+          </div>
+          <div class="row">
           <div class='col-md-6 col-xs-12'><a href="http://smileawhile.github.io/tictac/"><img class="thumb" src='images/tictacThumb.png'/></a></div>
           <div class='col-md-6 col-xs-12'><h1>Tic Tac Toe Game</h1>
             <h3>Play Tic Tac Toe agaisnt a computer opponent.<br/>
