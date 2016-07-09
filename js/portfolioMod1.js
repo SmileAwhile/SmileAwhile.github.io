@@ -15,10 +15,15 @@ $(document).ready(function() {
     $("#send").click(function(e) {
             e.preventDefault();
 
-            var subject = $('#email').val();
+            var email = $('#email').val();
             var name = $('#name').val();
             var phone = $('#phone').val();
             var emailBody = $('#message').val();
             window.location.assign("mailto:cjdunn11@gmail.com?subject="+name+"_"+subject+"_"+phone+"&body="+emailBody);
+
+            $.post("http://smileawhile.netai.net/mail.php", {subject: name, email: email, message: emailBody, phone: phone}, function(data) {
+              alert('Email Sent!');
+            });
+
    });
 });

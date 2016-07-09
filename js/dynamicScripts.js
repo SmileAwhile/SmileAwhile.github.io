@@ -12,8 +12,6 @@ import TopCampers from "../campers/js/module1";
 import TwitchScript from "../twitch/js/TwitchScripts";
 import WikiScript from "../wiki/js/wikiScripts";
 
-require('./portfolioMod1');
-
 const base = document.getElementById('base');
 
 ReactDOM.render ((
