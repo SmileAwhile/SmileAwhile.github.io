@@ -12,11 +12,15 @@ body {
   /* Internet Explorer/Edge */
   user-select: none; }
 
+.home {
+  margin-top: 20px;
+  text-align: center; }
+
 .board {
   margin-left: auto;
   margin-right: auto;
   width: 500px;
-  margin-top: 15%;
+  margin-top: 10%;
   margin-bottom: auto;
   height: 500px;
   background: #3e4150;
