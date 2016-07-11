@@ -69,19 +69,24 @@ export default class Layout extends React.Component {
                     <NavDropdown eventKey={5} title="D3js Projects" id="d3-nav-dropdown">
                       <MenuItem eventKey={5.1} href="http://smileawhile.github.io/d3js/">Gross Domestic Product Bar Chart</MenuItem>
                     </NavDropdown>
-                    <NavDropdown eventKey={6} title="Other Projects" id="other-nav-dropdown">
-                      <MenuItem eventKey={6.1} href="https://smileawhile.github.io/weatherApp.html">Local Weather App</MenuItem>
-                      <MenuItem eventKey={6.2} href="http://smileawhile.github.io/pom.html">Pomodoro Clock</MenuItem>
-                      <MenuItem eventKey={6.3} href="http://smileawhile.github.io/calc.html">Simple Calculator</MenuItem>
-                      <MenuItem divider />
-                      <MenuItem eventKey={6.4} href="tribute.html">Tribute Page</MenuItem>
+                    <NavDropdown eventKey={6} title="Backend Projects" id="other-nav-dropdown">
+                      <MenuItem eventKey={6.1} href="https://tsmic.herokuapp.com">Timestamp Microservice</MenuItem>
+                      <MenuItem eventKey={6.2} href="https://shorterer.herokuapp.com">URL Shortener</MenuItem>
+                      <MenuItem eventKey={6.3} href="https://parsehead.herokuapp.com">UA Header Parser</MenuItem>
                     </NavDropdown>
-                    <NavDropdown eventKey={7} title="More About Me" id="more-nav-dropdown">
-                      <MenuItem eventKey={7.1} href="https://github.com/SmileAwhile">View my Github</MenuItem>
+                    <NavDropdown eventKey={7} title="Other Projects" id="other-nav-dropdown">
+                      <MenuItem eventKey={7.1} href="https://smileawhile.github.io/weatherApp.html">Local Weather App</MenuItem>
+                      <MenuItem eventKey={7.2} href="http://smileawhile.github.io/pom.html">Pomodoro Clock</MenuItem>
+                      <MenuItem eventKey={7.3} href="http://smileawhile.github.io/calc.html">Simple Calculator</MenuItem>
                       <MenuItem divider />
-                      <MenuItem eventKey={7.2} href="http://smileawhile.github.io/resume">My Resume</MenuItem>
+                      <MenuItem eventKey={7.4} href="tribute.html">Tribute Page</MenuItem>
+                    </NavDropdown>
+                    <NavDropdown eventKey={8} title="More About Me" id="more-nav-dropdown">
+                      <MenuItem eventKey={8.1} href="https://github.com/SmileAwhile">View my Github</MenuItem>
                       <MenuItem divider />
-                      <MenuItem eventKey={7.3} href="mailto:cjdunn11@gmail.com">Contact Me</MenuItem>
+                      <MenuItem eventKey={8.2} href="http://smileawhile.github.io/resume">My Resume</MenuItem>
+                      <MenuItem divider />
+                      <MenuItem eventKey={8.3} href="mailto:cjdunn11@gmail.com">Contact Me</MenuItem>
                     </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>
