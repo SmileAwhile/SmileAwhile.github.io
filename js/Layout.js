@@ -73,7 +73,9 @@ export default class Layout extends React.Component {
                       <MenuItem eventKey={6.1} href="https://tsmic.herokuapp.com">Timestamp Microservice</MenuItem>
                       <MenuItem eventKey={6.2} href="https://shorterer.herokuapp.com">URL Shortener</MenuItem>
                       <MenuItem eventKey={6.3} href="https://parsehead.herokuapp.com">UA Header Parser</MenuItem>
-                    </NavDropdown>
+                      <MenuItem eventKey={6.4} href="https://imsearc.herokuapp.com">Image Search</MenuItem>
+                      <MenuItem eventKey={6.5} href="https://fmeta.herokuapp.com">File Metadata</MenuItem>
+                      </NavDropdown>
                     <NavDropdown eventKey={7} title="Other Projects" id="other-nav-dropdown">
                       <MenuItem eventKey={7.1} href="https://smileawhile.github.io/weatherApp.html">Local Weather App</MenuItem>
                       <MenuItem eventKey={7.2} href="http://smileawhile.github.io/pom.html">Pomodoro Clock</MenuItem>
