@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monthly Global Land-Surface Temperature</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<style>
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    font: 20px sans-serif;
+    background: rgb(103,5,5);
+    color: white;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+button {
+  margin: 10px;
+}
+.heading {
+  color: red;
+}
+body {
+  background: url("backimg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#selection {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-left: 30px;
+  width: 1250px;
+  margin-top: 5%;
+  margin-bottom: auto;
+  height: 700px;
+  background-color: white;
+  opacity: 0.7;
+  box-shadow: 7px 7px #0d162e;
+}
+</style>
+<body>
+  <div class="outer">
+    <a href="http://smileawhile.github.io"><button class="btn btn-success">HOME</button></a>
+    <div id="selection" class="container well"></div>
+  </div>
+
+  <script>
+
+  d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json", function(dataJ) {
+
+    // assign data to object array from url
+    var data = dataJ.monthlyVariance;
+    // assign base temp value
+    var base = dataJ.baseTemperature;
+
+
+    // set margin and width, height, month names and color buckets
+    var margin = {top: 75, right: 100, bottom: 70, left: 70},
+        width = 1200 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+        gridWidth = Math.floor(width / (2015 - 1753)),
+        gridHeight = Math.floor(height / 12),
+        legendElementWidth = gridWidth*20,
+        buckets = 13,
+        colors = ["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598", "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"],
+        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+
+
+
+
+    // go through data array and set Month value, year value, variance value, actual temp value, and month name
+    data.forEach(function(d) {
+        d.month = +d.month;
+        d.year = +d.year;
+        d.variance = +d.variance;
+        d.temp = +d.variance + base;
+        d.monthName = months[d.month - 1]
+    });
+
+
+    // set range of x and y
+    var x = d3.scale.linear().range([0, width]);
+    var y = d3.scale.linear().range([0, height]);
+
+    // set domain of x and y
+    xScale = x.domain(d3.extent(data, function(d) { return d.year; }));
+    yScale = y.domain(d3.extent(data, function(d) { return d.month; }));
+
+    var maxTemp = d3.max(data, function(d) { return d.temp + 2; } );
+    var minTemp = d3.min(data, function(d) { return d.temp; } );
+
+    // color scale
+    var colorScale = d3.scale.quantile()
+              .domain([minTemp, maxTemp])
+              .range(colors);
+
+    var colorQuantiles = colorScale.quantiles();
+      colorQuantiles.unshift(0);
+
+    // create tooltip variable
+    var div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    // create x axis and set date format
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickFormat(d3.format("d"));
+
+    // create y axis
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+
+
+    // create svg on #selection
+    var svg = d3.select("#selection").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+      // display x axis
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Year");
+
+      // display y axis
+      var monthLabels = svg.selectAll(".monthLabel")
+        .data(months)
+        .enter().append("text")
+          .text(function (d) { return d; })
+          .attr("x", 0)
+          .attr("y", function (d, i) { return i * gridHeight; })
+          .style("text-anchor", "end")
+          .attr("transform", "translate(-6," + gridHeight / 1.5 + ")");
+
+          // display heat map
+          svg.selectAll(".rect")
+            .data(data)
+          .enter().append("rect")
+            .attr("class", "rect")
+            .attr("x", function(d) { return xScale(d.year); })
+            .attr("y", function(d) { return yScale(d.month / 1.1); }) // offset for proper placement
+            .attr("width", gridWidth)
+            .attr("height", gridHeight)
+            .style("fill", function(d) { return colorScale(d.temp); })
+            .on("mouseover", function(d) {   // mouseover tooltip
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                div.html(d.year + " - " + d.monthName + "<br/>" + (Math.floor(d.temp * 100)/100).toFixed(2) + " &degC<br/>" + d.variance + " &degC")
+                    .style("left", (d3.event.pageX - 125) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                })
+            .on("mouseout", function(d) {    // return to normal after mouse leaves
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+
+
+            //Create a legend
+
+            var blockWidth = 35;
+            var blockHeight = 20;
+
+            var legend = svg.selectAll(".legend")
+              .data(colorQuantiles)
+              .enter()
+              .append("g")
+              .attr("class", "legend")
+              .attr("font-size", "14px")
+              .attr("font-style", "PT Sans")
+              .attr("transform", function(d, i) {
+
+                return ("translate(" + i * blockWidth + ",0)")
+
+              });
+
+            legend.append("rect")
+              .attr("x", (width / 5) * 3)
+              .attr("y", height + (margin.bottom / 3))
+              .attr("width", blockWidth)
+              .attr("height", blockHeight)
+              .style("fill", function(d, i) {
+
+                return (colors[i]);
+
+              });
+
+            legend.append("text")
+              .attr("x", ((width / 5) * 3) + (blockWidth / 2))
+              .attr("y", (height + (margin.bottom / 3)) + blockHeight + 15)
+              .text(function(d, i) {
+
+                return colorQuantiles[i].toFixed(1);
+
+              })
+              .style("text-anchor", "middle");
+
+
+          // heading
+            svg.append("g")
+                .append("text")
+                .attr("fill", "black")
+                .attr("y", -60)
+                .style("font-size", "40px")
+                .style("font-family", "cambria")
+                .text("Monthly Global Land-Surface Temperature")
+                .attr("transform", "translate (100, 20)");
+
+            // extra information at bottom of canvas
+            d3.select("#selection").append("p")
+                .style("color", "slategrey")
+                .style("font-family", "cambria")
+                .style("text-align", "center")
+                .text("Temperatures are in Celsius and reported as anomalies relative to the Jan 1951-Dec 1980 average. Estimated Jan 1951-Dec 1980 absolute temperature ℃: 8.66 +/- 0.07");
+
+
+
+    });  // end of d3 data function
+
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
