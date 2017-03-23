@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doping in Professional Bicycle Racing</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<style>
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 250px;
+    height: 200px;
+    padding: 2px;
+    font: 20px sans-serif;
+    background: slategrey;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+button {
+  margin: 10px;
+}
+.heading {
+  color: red;
+}
+body {
+  background: url("backimg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#selection {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-left: 30px;
+  width: 1250px;
+  margin-top: 5%;
+  margin-bottom: auto;
+  height: 700px;
+  background-color: white;
+  opacity: 0.7;
+  box-shadow: 7px 7px #0d162e;
+}
+</style>
+<body>
+  <div class="outer">
+    <a href="http://smileawhile.github.io"><button class="btn btn-success">HOME</button></a>
+    <div id="selection" class="container well"></div>
+  </div>
+
+  <script>
+
+  d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json", function(error, dataJ) {
+    if (error) throw error;
+
+    var data = dataJ;
+    console.log(data);
+
+
+
+
+    var margin = {top: 20, right: 100, bottom: 70, left: 70},
+        width = 1200 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+
+    // Parse the date / time
+    var	parseDate = d3.time.format("%Y-%m-%d").parse;
+    var formatTime = d3.time.format("%B %Y");
+
+    data.forEach(function(d) {
+          d.Place = +d.Place;
+          d.Seconds = +d.Seconds;
+          if (d.Doping != "") {
+            d.Color = "red"
+          } else {
+            d.Color = "black"
+          }
+    });
+
+    var x = d3.scale.linear().range([width, 0]);
+
+    var y = d3.scale.linear().range([0, height]);
+
+    var color = d3.scale.category10();
+
+    x.domain(d3.extent(data, function(d) { return d.Seconds; })).nice();
+    y.domain(d3.extent(data, function(d) { return d.Place; })).nice();
+
+    var div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickFormat(function(d) {
+          return -2200+d;
+        })
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(function(d) {
+          return d+1;
+        })
+
+    var svg = d3.select("#selection").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Seconds Behind Fastest Time");
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Ranking");
+
+      svg.selectAll(".dot")
+          .data(data)
+        .enter().append("circle")
+          .attr("class", "dot")
+          .attr("r", 3.5)
+          .attr("cx", function(d) { return x(d.Seconds - 10); })
+          .attr("cy", function(d) { return y(d.Place - 1); })
+          .style("fill", function(d) { return d.Color; })
+
+      svg.selectAll(".names")
+        .data(data)
+      .enter().append("text")
+        .attr("class", "names")
+        .attr("x", function(d) { return x(d.Seconds - 12 ); })
+        .attr("y", function(d) { return y(d.Place - 1); })
+        .text(function(d) { return d.Name; })
+          .on("mouseover", function(d) {
+            d3.select(this).style("fill", "green")
+              div.transition()
+                  .duration(200)
+                  .style("opacity", .9);
+              div.html(d.Name + ": " + d.Nationality + "<br/>" + "Year: " + d.Year + " Time: " + d.Time + "<br/><br/>" + d.Doping)
+                  .style("left", (d3.event.pageX - 300) + "px")
+                  .style("top", (d3.event.pageY - 28) + "px");
+              })
+          .on("mouseout", function(d) {
+            d3.select(this).style("fill", "black")
+              div.transition()
+                  .duration(500)
+                  .style("opacity", 0);
+          });
+
+
+    var legend = svg.selectAll(".legend")
+      .data(color.domain())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    svg.append("rect")
+      .attr("x", width - 18)
+      .attr("y", height - 300)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", "red");
+
+    svg.append("text")
+      .attr("x", width - 24)
+      .attr("y", height - 290)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text("Riders With Doping Allegations")
+
+    svg.append("rect")
+      .attr("x", width - 18)
+      .attr("y", height - 350)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", "black");
+
+    svg.append("text")
+      .attr("x", width - 24)
+      .attr("y", height - 340)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text("No Doping Allegations")
+
+      svg.append("g")
+          .append("text")
+          .attr("fill", "black")
+          .style("font-size", "40px")
+          .style("font-family", "cambria")
+          .text("Doping in Professional Bicycle Racing")
+          .attr("transform", "translate (100, 20)");
+
+
+    });
+
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
