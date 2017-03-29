@@ -70,6 +70,7 @@ export default class Layout extends React.Component {
                       <MenuItem eventKey={5.1} href="http://smileawhile.github.io/d3js/">Gross Domestic Product Bar Chart</MenuItem>
                       <MenuItem eventKey={5.2} href="http://smileawhile.github.io/d3jsScatterPlot/">Doping in Professional Bicycle Racing</MenuItem>
                       <MenuItem eventKey={5.3} href="http://smileawhile.github.io/d3jsHeatMap/">Heatmap of Global Surface Temerature</MenuItem>
+                      <MenuItem eventKey={5.4} href="http://smileawhile.github.io/d3jsForceDirected/">Nation Border Force Directed Graph</MenuItem>
                     </NavDropdown>
                     <NavDropdown eventKey={6} title="Backend Projects" id="other-nav-dropdown">
                       <MenuItem eventKey={6.1} href="https://tsmic.herokuapp.com">Timestamp Microservice</MenuItem>

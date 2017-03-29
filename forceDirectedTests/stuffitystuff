@@ -1,0 +1,13 @@
+var node = svg.append("g")
+        .attr("class", "node")
+      .selectAll("image")
+      .data(dataJ.nodes)
+      .enter().append("svg:image")
+        .attr("xlink:href", "./flags.png")
+        .attr("width", 188)
+        .attr("height", 192)
+        .attr("class", function(d) { return "flag flag-" + d.code + " node"; })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));

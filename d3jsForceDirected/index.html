@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nation Border Force Directed Graph</title>
+    <link rel="stylesheet" href="./flags.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  </head>
+  <style>
+    body {
+    	background-color: black;
+    }
+
+    .tooltip {
+        position: absolute;
+        text-align: center;
+        width: auto;
+        height: auto;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: white;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    .links {
+    	stroke-width: 1px;
+    	stroke: red;
+    }
+
+  </style>
+  <body>
+    <div class="outer">
+      <a href="http://smileawhile.github.io"><button class="btn btn-success">HOME</button><br/></a>
+      <div id="chart" class="chart"></div>
+    <script>
+
+    d3.json("https://raw.githubusercontent.com/DealPete/forceDirected/master/countries.json", function(dataJ) {
+
+
+
+      // set margin and width, height
+      var width = 700;
+      var height = 700;
+
+
+      // limit bounds of simulation
+      var forceLimit = function() {
+        dataJ.nodes.forEach((d,i)=> {
+          if(dataJ.nodes[i].x<-(width/2) + 25) { dataJ.nodes[i].x=-(width/2) + 25; }
+          if(dataJ.nodes[i].y<-(height/2) + 25) { dataJ.nodes[i].x=-(height/2) + 25; }
+          if(dataJ.nodes[i].x>(width/2) -25) { dataJ.nodes[i].x=(width/2) -25; }
+          if(dataJ.nodes[i].x>(height/2) -25) { dataJ.nodes[i].x=(height/2) -25; }
+        });
+      }
+
+      // set simulation
+      var simulation = d3.forceSimulation(dataJ.nodes)
+          .force("link", d3.forceLink(dataJ.links).distance(50))
+          .force("collide", d3.forceCollide(20))
+          .force("manyBody",d3.forceManyBody().strength(-1))
+          .force("limit", forceLimit);
+
+      dataJ.nodes.forEach((d,i)=>{
+        dataJ.nodes[i].x=0;
+        dataJ.nodes[i].y=0;
+      });
+
+      // create tooltip variable
+      var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+
+      // create svg on .chart
+      var svg = d3.select("#chart").append("svg")
+          .attr("class", "svg")
+          .attr("width", width)
+          .attr("height", height)
+        .append("g");
+
+      // create links
+      var link = svg.selectAll("g")
+          .data(dataJ.links)
+          .enter().append("line")
+            .style("stroke", "red")
+            .attr("id",(d,i)=>{ return "link"+i; });
+
+      // create nodes
+      var flagDiv = d3.select(".chart").append("div").attr("class", "flagsDiv");
+
+      flagDiv.selectAll("img")
+          .data(dataJ.nodes)
+          .enter().append("img")
+            .attr("class", function(d) { return "flag flag-" + d.code + " node"; })
+            .style("left",(d)=>{  return (width/2 +d.x)+"px"; })
+            .style("top",(d)=>{  return (height/2 +d.y)+"px"; })
+            .attr("id", (d,i)=>{ return "node"+i; } )
+            .call(d3.drag()  // node drag
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            .on("mouseover", function(d) {   // mouseover tooltip
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 0.9);
+                div.html("<h2>" + d.country + "</h2>")
+                    .style("left", (d3.event.pageX - 25) + "px")
+                    .style("top", (d3.event.pageY - 5) + "px");
+                })
+            .on("mouseout", function(d) {    // return to normal after mouse leaves
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+      // start simulation
+      simulation
+          .nodes(dataJ.nodes)
+          .on("tick", ticked)
+          .on("end",()=> {
+            simulation.nodes().forEach((d,i)=> {
+              $(".node"+i).css("fill", "#0F0");
+            });
+          });
+
+
+      function ticked() {
+        // set start and end point of links to correct position
+        dataJ.links.forEach((d,i)=>{
+          $("#link"+i).attr("x1",d.source.x+(width/2)-5 );
+          $("#link"+i).attr("y1",d.source.y+(height/2)-20 );
+          $("#link"+i).attr("x2",d.target.x+(width/2)-5);
+          $("#link"+i).attr("y2",d.target.y+(height/2)-20 );
+        });
+        // place each node correctly
+        simulation.nodes().forEach((d,i)=>{
+          $("#node"+i).css("left",(d.x+(width/2))+"px");
+          $("#node"+i).css("top",(d.y+(height/2))+"px");
+        });
+       }
+
+     // drag functions
+      function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+      }
+
+      function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+
+
+    });  // end of d3 data function
+
+    </script>
+
+  </body>
+</html>

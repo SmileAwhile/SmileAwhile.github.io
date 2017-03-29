@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monthly Global Land-Surface Temperature</title>
+  <link rel="stylesheet" href="./flags.min.css" />
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+<style>
+body {
+	background-color: blue;
+}
+
+h1 {
+	text-align: center;
+}
+
+
+
+#tooltip {
+	display: none;
+	padding: 3px;
+	border-radius: 2px;
+	box-shadow: -2px 2px 10px black;
+	z-index: 1;
+	position: absolute;
+	background-color: white;
+}
+
+#selection {
+	width: 1000px;
+	height: 800px;
+	margin: auto;
+	box-shadow: -3px 3px 20px black;
+	background-color: black;
+}
+
+.links {
+	stroke-width: 1px;
+	stroke: red;
+}
+
+
+
+
+</style>
+<body>
+  <div class="chart"></div>
+  </div>
+
+  <script>
+
+  var data = {};
+  $.get("https://raw.githubusercontent.com/DealPete/forceDirected/master/countries.json",(d)=>{ data=JSON.parse(d); fillInData(); });
+  //Image source: http://i1067.photobucket.com/albums/u434/josh5231/flags_zpskmzyrpsk.png
+
+  var offsetX = 400;
+  var offsetY = 400;
+
+  // Add a div to our page. This will be used a our tooltip box.
+
+
+  var svg = d3.select(".chart")
+        .append("svg")
+        .attr("class","svg")
+        .attr("width",800)
+        .attr("height",800)
+        .append("g");
+
+  var tooltip = d3.select("body").append("div")
+  .attr("class","tooltip")
+  .style("opacity",0);
+
+  var boxLimter = function()
+    {
+      data.nodes.forEach((d,i)=>{
+        if(data.nodes[i].x<-offsetX+25){ data.nodes[i].x=-offsetX+25; }
+        if(data.nodes[i].y<-offsetY+25){ data.nodes[i].y=-offsetX+25; }
+        if(data.nodes[i].x>offsetX-25){ data.nodes[i].x=offsetX-25; }
+        if(data.nodes[i].y>offsetY-25){ data.nodes[i].y=offsetY-25; }
+      });
+    }
+
+  var fillInData=function()
+    {
+
+      var sim = d3.forceSimulation(data.nodes)
+              .force("link",d3.forceLink(data.links).distance(50))
+              .force("colliede",d3.forceCollide(20))             .force("manyBody",d3.forceManyBody().strength(-1))
+        .force("limter",boxLimter);
+
+
+
+      data.nodes.forEach((d,i)=>{
+        data.nodes[i].x=0;
+        data.nodes[i].y=0;
+      });
+
+          svg.selectAll("g")
+              .data(data.links)
+              .enter()
+                .append("line")
+                .style("stroke","#F00")
+                .attr("id",(d,i)=>{ return "link"+i; });
+
+      var flagDiv = d3.select(".chart").append("div").attr("class","flagsDiv");
+
+      flagDiv.selectAll("img")
+               .data(data.nodes)
+               .enter()
+                .append("img")
+                .attr("class",(d)=>{ return "flag flag-"+d.code })
+                .style("left",(d)=>{  return (offsetX+d.x)+"px"; })
+                .style("top",(d)=>{  return (offsetY+d.y)+"px"; })
+                .attr("id", (d,i)=>{ return "node"+i; } )
+                .call(d3.drag()
+  								  .on("start", (d) => {	if (!d3.event.active) sim.alphaTarget(0.3).restart();	})
+          					.on("drag", (d) => { d.fx = d3.event.x;	d.fy = d3.event.y;	})
+                    .on("end", (d) =>{
+  				              if (!d3.event.active) sim.alphaTarget(0);
+  				              d.fx = undefined;
+  				              d.fy = undefined;
+  			                })
+                     )
+                .on("mouseover",(d)=>{
+                      tooltip.transition().duration(400).style("opacity",0.9);
+                      tooltip.html(d.country)
+                      .style("left", (d3.event.pageX+15) + "px")
+                      .style("top", (d3.event.pageY+5) + "px");
+                    })
+                  .on("mouseout",(d)=>{ tooltip.transition().duration(600).style("opacity",0); });
+
+
+
+
+
+      sim.on('tick', function()
+      {
+        data.links.forEach((d,i)=>{
+          $("#link"+i).attr("x1",d.source.x+offsetX+12 );
+          $("#link"+i).attr("y1",d.source.y+offsetY+7 );
+          $("#link"+i).attr("x2",d.target.x+offsetX+12 );
+          $("#link"+i).attr("y2",d.target.y+offsetY+7 );
+        });
+
+        sim.nodes().forEach((d,i)=>{
+          $("#node"+i).css("left",(d.x+offsetX)+"px");
+          $("#node"+i).css("top",(d.y+offsetY)+"px");
+        });
+
+       })
+      .on('end',()=>{
+         sim.nodes().forEach((d,i)=>{
+         $(".node"+i).css("fill","#0F0");
+         });
+       });
+
+    }
+  </script>
+
+
+</body>
+</html>
