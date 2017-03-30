@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map Data Across the Globe</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="./datamaps.world.min.js"></script>
+  </head>
+  <style>
+  </style>
+  <body>
+    <div class="outer">
+      <a href="http://smileawhile.github.io"><button class="btn btn-success">HOME</button><br/></a>
+      <div id="chart" class="chart" style="position: relative; background: #2c39aa; width: 1000px; height: 800px; margin-left: 50px;"></div>
+    <script>
+
+      d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json", function(dataJ) {
+
+            // create variables for meteo and meteoMap
+            var fillData = {};   // assign to data property later
+            var meteoData = [];  // assign to meteo variable later
+            var colorFill = { defaultFill: '#42a458' };  // assign to fills property later
+
+            // assign values to variables for meteo and meteoMap
+            dataJ.features.forEach(function (d) {
+
+              // make sure d.geometry exists before adding data
+              if (d && d.geometry) {
+
+                  // variables to assign to arrays and objects
+                  var name = d.properties.name;
+                  var fall = d.properties.fall;
+                  var mass = d.properties.mass;
+                  var nameType = d.properties.nametype;
+                  var recclass = d.properties.recclass;
+                  var reclat = d.properties.reclat;
+                  var year = d.properties.year;
+                  var long = d.geometry.coordinates[0];
+                  var lat = d.geometry.coordinates[1];
+                  var color;
+
+                  meteoData.push({
+                    'name': name,
+                    'fall': fall,
+                    'mass': mass,
+                    'nameType': nameType,
+                    'recclass': recclass,
+                    'reclat': reclat,
+                    'year': year,
+                    'radius': mass / 300000,
+                    'latitude': lat,
+                    'longitude': long
+                  });
+
+                  // change color of circle based on mass
+                  if (mass > 4000000) {
+                    color = '#f00';
+                  } else if (mass > 100000) {
+                    color = '#8829af';
+                  } else if (mass > 10000) {
+                    color = '#404f0c';
+                  } else {
+                    color = '#041c49';
+                  }
+
+                  fillData[name] = {fillKey: name} ;
+
+                  colorFill[name] = color;
+
+              }
+
+            });  // end forEach
+
+            // create dataMap meteoMap and assign values previously determined
+            var meteoMap = new Datamap({
+            element: document.getElementById('chart'),
+            scope: 'world',
+            geographyConfig: {
+                popupOnHover: false,
+                highlightOnHover: false
+            },
+            fills: colorFill,
+            data: fillData
+        });  // end new Datamap
+
+             var meteo = meteoData;
+        //draw bubbles for meteo
+        meteoMap.bubbles(meteo, {
+            popupTemplate: function (geo, data) {
+                    return ['<div class="hoverinfo">' +  data.name,
+                    '<br/>Mass: ' +  data.mass ,
+                    '<br/>Fall: ' +  data.fall + '',
+                    '<br/>NameType: ' + data.nameType ,
+                    '<br/>RecClass: ' + data.recclass ,
+                    '<br/>Reclat: ' + data.reclat ,
+                    '<br/>Year: ' +  data.year + '',
+                    '</div>'].join('');
+            }
+        });  // end meteoMap.bubbles
+
+      });  // end d3.json
+
+    </script>
+
+  </body>
+</html>
