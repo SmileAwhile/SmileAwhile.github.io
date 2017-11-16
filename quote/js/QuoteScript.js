@@ -11,7 +11,7 @@ export default class QuoteScript extends React.Component {
 
   handleClick() {
     console.log("pushed");
-    $.getJSON("http://api.icndb.com/jokes/random", function(json) {
+    $.getJSON("https://api.icndb.com/jokes/random", function(json) {
         $("#joke").fadeOut(500, function() {
           $(this).text('"' + json.value.joke.replace(/"|&quot;/g, "'") + '"').fadeIn(500);
         })
