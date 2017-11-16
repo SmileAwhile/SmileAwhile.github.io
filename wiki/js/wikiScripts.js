@@ -23,7 +23,7 @@ export default class WikiScript extends React.Component {
     if (queryData != "") {
         $(".middle").html("");
 
-        $.getJSON("http://en.wikipedia.org/w/api.php?action=opensearch&search="+queryData+"&format=json&callback=?", function(data) {
+        $.getJSON("https://en.wikipedia.org/w/api.php?action=opensearch&search="+queryData+"&format=json&callback=?", function(data) {
 
             results = data;
 

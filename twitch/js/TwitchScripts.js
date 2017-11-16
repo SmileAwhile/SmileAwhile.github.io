@@ -36,7 +36,7 @@ export default class TwitchScript extends React.Component {
             // if offline
             else {
 
-                 list.push("<a href='http://twitch.tv/"+data._links.channel.split("/")[5]+"'><div class='row well offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+data._links.self.split("/")[5]+"</h4></div><div class='status col-xs-9'><h4>OFFLINE</h4></div></div></a>");
+                 list.push("<a href='https://twitch.tv/"+data._links.channel.split("/")[5]+"'><div class='row well offline user'><div class='icon col-xs-1'><img class='logo'  src='offline.png'></div><div class='col-xs-2'><h4 class='name'>"+data._links.self.split("/")[5]+"</h4></div><div class='status col-xs-9'><h4>OFFLINE</h4></div></div></a>");
                  self.setState({list});
             }
         }) // end .done
